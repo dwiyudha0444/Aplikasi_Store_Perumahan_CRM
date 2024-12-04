@@ -7,5 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class DenahPerum extends Model
 {
-    use HasFactory;
+    protected $table = 'bangunan';
+
+    protected $fillable = [
+        'nama',
+        'ijazah',
+        'transkip_nilai',
+        'penilaian_prestasi_kerja',
+        'jadwal_pendidikan',
+        'status',
+        'peguruan_tinggi',
+        'jurusan',
+        'alamat',
+        'keterangan'
+    ];
 }
