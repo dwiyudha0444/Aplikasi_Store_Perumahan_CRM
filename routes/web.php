@@ -29,6 +29,7 @@ Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login_proses', [LoginController::class, 'login_proses'])->name('login_proses');
 Route::get('/register', [RegisterController::class, 'index'])->name('form_register');
 Route::post('/register', [RegisterController::class, 'register_proses'])->name('register');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 //dashboard admin
 Route::get('/dashboard_admin', [DashboardAdminController::class, 'index'])->name('dashboard_admin');

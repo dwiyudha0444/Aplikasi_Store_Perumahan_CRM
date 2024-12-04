@@ -37,7 +37,7 @@
 				</li>
 			</ul>
 			<!-- /.menu js__accordion -->
-			<h5 class="title">User Interface</h5>
+			{{-- <h5 class="title">User Interface</h5>
 			<!-- /.title -->
 			<ul class="menu js__accordion">
 				<li>
@@ -91,9 +91,9 @@
 					</ul>
 					<!-- /.sub-menu js__content -->
 				</li>
-			</ul>
+			</ul> --}}
 			<!-- /.menu js__accordion -->
-			<h5 class="title">Additions</h5>
+			{{-- <h5 class="title">Additions</h5>
 			<!-- /.title -->
 			<ul class="menu js__accordion">
 				<li>
@@ -133,7 +133,7 @@
 					</ul>
 					<!-- /.sub-menu js__content -->
 				</li>
-			</ul>
+			</ul> --}}
 			<!-- /.menu js__accordion -->
 		</div>
 		<!-- /.navigation -->
