@@ -13,4 +13,9 @@ class DenahPerumController extends Controller
         $perum = DenahPerum::orderBy('created_at', 'desc')->get();
         return view('dashboard.admin.denah_perum.index', compact('perum'));
     }
+
+    public function create()
+    {
+        return view('dashboard.admin.denah_perum.form');
+    }
 }
