@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\DashboardAdminController;
+use App\Http\Controllers\admin\DenahPerumController;
 use App\Http\Controllers\auth\LoginController;
 use App\Http\Controllers\auth\RegisterController;
 use Illuminate\Support\Facades\Route;
@@ -33,3 +34,6 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 //dashboard admin
 Route::get('/dashboard_admin', [DashboardAdminController::class, 'index'])->name('dashboard_admin');
+
+//denah perum
+Route::get('/denah_perum', [DenahPerumController::class, 'index'])->name('denah_perum');

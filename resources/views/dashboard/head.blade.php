@@ -10,28 +10,28 @@
 	<title>Home - SpaceX Template</title>
 
 	<!-- Main Styles -->
-	<link rel="stylesheet" href="assets/styles/style.min.css">
+	<link rel="stylesheet" href="{{ asset('assets/styles/style.min.css')}}">
 	
 	<!-- Themify Icon -->
-	<link rel="stylesheet" href="assets/fonts/themify-icons/themify-icons.css">
+	<link rel="stylesheet" href="{{ asset('assets/fonts/themify-icons/themify-icons.css')}}">
 
 	<!-- mCustomScrollbar -->
-	<link rel="stylesheet" href="assets/plugin/mCustomScrollbar/jquery.mCustomScrollbar.min.css">
+	<link rel="stylesheet" href="{{ asset('assets/plugin/mCustomScrollbar/jquery.mCustomScrollbar.min.css')}}">
 
 	<!-- Waves Effect -->
-	<link rel="stylesheet" href="assets/plugin/waves/waves.min.css">
+	<link rel="stylesheet" href="{{ asset('assets/plugin/waves/waves.min.css')}}">
 
 	<!-- Sweet Alert -->
-	<link rel="stylesheet" href="assets/plugin/sweet-alert/sweetalert.css">
+	<link rel="stylesheet" href="{{ asset('assets/plugin/sweet-alert/sweetalert.css')}}">
 	
 	<!-- Percent Circle -->
-	<link rel="stylesheet" href="assets/plugin/percircle/css/percircle.css">
+	<link rel="stylesheet" href="{{ asset('assets/plugin/percircle/css/percircle.css')}}">
 
 	<!-- Chartist Chart -->
-	<link rel="stylesheet" href="assets/plugin/chart/chartist/chartist.min.css">
+	<link rel="stylesheet" href="{{ asset('assets/plugin/chart/chartist/chartist.min.css')}}">
 
 	<!-- FullCalendar -->
-	<link rel="stylesheet" href="assets/plugin/fullcalendar/fullcalendar.min.css">
-	<link rel="stylesheet" href="assets/plugin/fullcalendar/fullcalendar.print.css" media='print'>
+	<link rel="stylesheet" href="{{ asset('assets/plugin/fullcalendar/fullcalendar.min.css')}}">
+	<link rel="stylesheet" href="{{ asset('assets/plugin/fullcalendar/fullcalendar.print.css')}}" media='print'>
 
 </head>
