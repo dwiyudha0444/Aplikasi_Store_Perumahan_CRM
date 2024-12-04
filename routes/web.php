@@ -25,5 +25,6 @@ Route::get('/', [landingpageController::class, 'index'])->name('landingpage');
 
 //auth
 Route::get('/login', [LoginController::class, 'index'])->name('login');
-Route::get('/register', [RegisterController::class, 'index'])->name('register');
-
+Route::post('/login_proses', [LoginController::class, 'login_proses'])->name('login_proses');
+Route::get('/register', [RegisterController::class, 'index'])->name('form_register');
+Route::post('/register', [RegisterController::class, 'register_proses'])->name('register');
