@@ -6,7 +6,7 @@ use App\Http\Controllers\auth\LoginController;
 use App\Http\Controllers\auth\RegisterController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\landingpageController;
-
+use App\Http\Controllers\Pelanggan\LandingpagePelangganController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +24,7 @@ use App\Http\Controllers\landingpageController;
 // });
 
 Route::get('/', [landingpageController::class, 'index'])->name('landingpage');
+Route::get('/landingpage_pelanggan', [LandingpagePelangganController::class, 'index'])->name('landingpage_pelanggan');
 
 //auth
 Route::get('/login', [LoginController::class, 'index'])->name('login');

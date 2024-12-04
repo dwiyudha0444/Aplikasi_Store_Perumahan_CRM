@@ -11,7 +11,7 @@
 			<i class="ti-user"></i>
 			<ul class="sub-ico-item">
 				<li><a href="#">Settings</a></li>
-				<li><a class="js__logout" href="{{ route('logout') }}">Log Out</a></li>
+				<li><a href="{{ route('logout') }}">Log Out</a></li>
 			</ul>
 			<!-- /.sub-ico-item -->
 		</div>
