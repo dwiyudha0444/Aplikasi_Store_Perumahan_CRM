@@ -5,10 +5,13 @@
             <div class="box-content">
                 <h4 class="box-title">Default</h4>
 
-                <!-- /.dropdown js__dropdown -->
+                <!-- Search bar -->
+                <div class="table-responsive">
+                    <input type="text" id="searchBar" class="form-control" placeholder="Cari...">
+                </div>
+
                 <table id="example" class="table table-striped table-bordered display" style="width:100%">
                     <thead>
-                        <tr>
                         <tr>
                             <th>Nama</th>
                             {{-- <th>Deskripsi</th> --}}
@@ -40,19 +43,30 @@
                         @foreach ($perum as $row)
                             <tr>
                                 <td>{{ $row->nama }}</td>
-                                <td>{{ $row->position }}</td>
-                                <td>{{ $row->office }}</td>
-                                <td>{{ $row->age }}</td>
-                                <td>{{ $row->start_date }}</td>
-                                <td>{{ $row->salary }}</td>
+                                <td>{{ $row->jalan }}</td>
+                                <td>{{ $row->blok }}</td>
+                                <td>{{ $row->nomer }}</td>
+                                <td>{{ $row->panjang }}</td>
+                                <td>{{ $row->luas }}</td>
+                                <td>{{ $row->harga }}</td>
                             </tr>
                         @endforeach
-
                     </tbody>
                 </table>
             </div>
             <!-- /.box-content -->
         </div>
-
     </div>
+
+    <script>
+        $(document).ready(function() {
+            // Initialize DataTable
+            var table = $('#example').DataTable();
+
+            // Custom search bar functionality
+            $('#searchBar').on('keyup', function() {
+                table.search(this.value).draw();
+            });
+        });
+    </script>
 @endsection
