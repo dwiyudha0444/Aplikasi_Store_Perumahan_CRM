@@ -9,6 +9,11 @@
 </head>
 
 <body>
+    <!-- Tombol Back -->
+    <div class="back-button">
+        <a href="#" onclick="history.back();">⬅ Back</a>
+    </div>
+
     <div class="siteplan">
         <!-- Jalan Horizontal -->
         <div class="jalan-horizontal"></div>
@@ -22,7 +27,6 @@
         <!-- Atas -->
         <div class="rumah" style="top: 150px; left: 200px;">A1</div>
         <div class="rumah" style="top: 50px; left: 200px;">A2</div>
-
 
         <!-- Samping Kiri -->
         <div class="rumah" style="top: 370px; left: 100px;">B1</div>
