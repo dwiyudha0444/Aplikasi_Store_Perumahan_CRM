@@ -8,10 +8,10 @@
     <!-- Fav Icon  -->
     <link rel="shortcut icon" href="images/favicon.png">
     <!-- Site Title  -->
-    <title>Kovid19 | Coronavirus (COVID-19) Prevention & Informatics HTML Template</title>
+    <title>Perum | Bangunan</title>
     <!-- Bundle and Base CSS -->
-    <link rel="stylesheet" href="assets/css/bundle.css?ver=112">
-    <link rel="stylesheet" href="assets/css/styles.css?ver=112">
+    <link rel="stylesheet" href="{{ asset('landingpage/assets/css/bundle.css?ver=112')}}">
+    <link rel="stylesheet" href="{{ asset('landingpage/assets/css/styles.css?ver=112')}}">
 </head>
 
 <body class="nk-body">
@@ -24,8 +24,8 @@
                     <div class="nk-navbar-wrap">
                         <div class="nk-navbar-logo logo">
                             <a href="./" class="logo-link">
-                                <img class="logo-dark" src="images/logo-dark.png" srcset="images/logo-dark2x.png 2x" alt="logo">
-                                <img class="logo-light" src="images/logo-white.png" srcset="images/logo-white2x.png 2x" alt="logo">
+                                <img class="logo-dark" src="{{ asset('landingpage/images/logo-dark.png')}}" srcset="{{ asset('landingpage/images/logo-dark2x.png 2x')}}" alt="logo">
+                                <img class="logo-light" src="{{ asset('landingpage/images/logo-white.png')}}" srcset="{{ asset('landingpage/images/logo-white2x.png 2x')}}" alt="logo">
                             </a>
                         </div><!-- .nk-navbar-logo -->
                         <div class="nk-navbar-toggle d-lg-none">
@@ -49,7 +49,7 @@
                                 </li>
                             </ul>
                             <ul class="nk-menu-btns">
-                                <li class="nk-menu-item"><a href="#protect" class="btn btn-sm scrollto nav-link">Do &amp; Don’t</a></li>
+                                <li class="nk-menu-item"><a href="" class="btn btn-sm scrollto nav-link">{{ Auth::user()->name }}</a></li>
                             </ul>
                         </nav><!-- .nk-navbar-menu -->
                     </div><!-- .nk-navbar-wrap -->
@@ -60,7 +60,7 @@
                     <div class="row g-gs align-items-center justify-content-between">
                         <div class="col-lg-5 order-lg-last">
                             <div class="nk-banner-image">
-                                <img src="images/gfx/header-a.png" alt="">
+                                <img src="{{ asset('landingpage/images/gfx/header-a.png')}}" alt="">
                             </div>
                         </div><!-- .col -->
                         <div class="col-lg-6">
@@ -158,7 +158,7 @@
                             <div class="col-sm-10 col-md-8 col-lg-4">
                                 <div class="box">
                                     <div class="box-gfx">
-                                        <img src="images/gfx/spread-a.png" alt="">
+                                        <img src="{{ asset('landingpage/images/gfx/spread-a.png')}}" alt="">
                                     </div>
                                     <div class="box-content">
                                         <h4 class="title">Person-to-person spread as close contact with infected </h4>
@@ -169,7 +169,7 @@
                             <div class="col-sm-10 col-md-8 col-lg-4">
                                 <div class="box">
                                     <div class="box-gfx">
-                                        <img src="images/gfx/spread-b.png" alt="">
+                                        <img src="{{ asset('landingpage/images/gfx/spread-b.png')}}" alt="">
                                     </div>
                                     <div class="box-content">
                                         <h4 class="title">Touching or contact with infected surfaces or objects</h4>
@@ -180,7 +180,7 @@
                             <div class="col-sm-10 col-md-8 col-lg-4">
                                 <div class="box">
                                     <div class="box-gfx">
-                                        <img src="images/gfx/spread-c.png" alt="">
+                                        <img src="{{ asset('landingpage/images/gfx/spread-c.png')}}" alt="">
                                     </div>
                                     <div class="box-content">
                                         <h4 class="title">Droplets that from infected person coughs or sneezes</h4>
@@ -1089,7 +1089,7 @@
     </div><!-- .nk-wrap -->
 
 	<!-- JavaScript -->
-	<script src="assets/js/bundle.js?ver=112"></script>
-	<script src="assets/js/scripts.js?ver=112"></script>
+	<script src="{{ asset('landingpage/assets/js/bundle.js?ver=112')}}"></script>
+	<script src="{{ asset('landingpage/assets/js/scripts.js?ver=112')}}"></script>
 </body>
 </html>

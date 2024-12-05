@@ -49,7 +49,7 @@
                                 </li>
                             </ul>
                             <ul class="nk-menu-btns">
-                                <li class="nk-menu-item"><a href="#protect" class="btn btn-sm scrollto nav-link">Do &amp; Don’t</a></li>
+                                <li class="nk-menu-item"><a href="{{ route('login')}}" class="btn btn-sm scrollto nav-link">Login</a></li>
                             </ul>
                         </nav><!-- .nk-navbar-menu -->
                     </div><!-- .nk-navbar-wrap -->

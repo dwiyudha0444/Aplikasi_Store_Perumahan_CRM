@@ -1,0 +1,72 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+  }
+  
+  .siteplan {
+    position: relative;
+    width: 800px;
+    height: 600px;
+    margin: 50px auto;
+    background-color: white;
+    border: 1px solid #ccc;
+  }
+  
+  /* Jalan Horizontal */
+  .jalan-horizontal {
+    position: absolute;
+    top: 250px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background-color: black;
+    z-index: 1;
+  }
+  
+  /* Jalan Vertikal */
+  .jalan-vertikal {
+    position: absolute;
+    top: 0;
+    left: 300px;
+    width: 100px;
+    height: 100%;
+    background-color: black;
+    z-index: 1;
+  }
+  
+  /* Masjid */
+  .masjid {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    background-color: orange;
+    color: white;
+    text-align: center;
+    line-height: 120px;
+    font-weight: bold;
+    border-radius: 10px;
+    z-index: 2;
+  }
+  
+  /* Rumah */
+  .rumah {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background-color: lightblue;
+    color: black;
+    text-align: center;
+    line-height: 80px;
+    border: 1px solid #333;
+    z-index: 2;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+  
+  .rumah:hover {
+    background-color: darkblue;
+    color: white;
+    transform: scale(1.1);
+  }
+  

@@ -11,5 +11,10 @@ class LandingpagePelangganController extends Controller
     {
         return view('landingpage.pelanggan.index');
     }
+
+    public function indexDenah()
+    {
+        return view('landingpage.denah.index');
+    }
 }
 

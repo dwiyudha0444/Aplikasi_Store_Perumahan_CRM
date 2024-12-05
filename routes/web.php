@@ -39,3 +39,6 @@ Route::get('/dashboard_admin', [DashboardAdminController::class, 'index'])->name
 //denah perum
 Route::get('/denah_perum', [DenahPerumController::class, 'index'])->name('denah_perum');
 Route::get('/form_bangunan', [DenahPerumController::class, 'create'])->name('form_bangunan');
+
+//pelanggan
+Route::get('/denah', [LandingpagePelangganController::class, 'indexDenah'])->name('denah');
