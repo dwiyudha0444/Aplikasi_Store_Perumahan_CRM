@@ -25,27 +25,28 @@
 
         <!-- Rumah-rumah -->
         <!-- Atas -->
-        <div class="rumah" style="top: 150px; left: 200px;">A1</div>
-        <div class="rumah" style="top: 50px; left: 200px;">A2</div>
+        <div class="rumah" id="{{ $rumahA1->id }}" style="top: 150px; left: 200px;">{{ $rumahA1->nama }}</div>
+        <div class="rumah" id="{{ $rumahA2->id }}" style="top: 50px; left: 200px;">{{ $rumahA2->nama }}</div>
 
         <!-- Samping Kiri -->
-        <div class="rumah" style="top: 370px; left: 100px;">B1</div>
-        <div class="rumah" style="top: 370px; left: 200px;">B2</div>
-        <div class="rumah" style="top: 470px; left: 200px;">B3</div>
+        <div class="pos"  style="top: 370px; left: 20px;">pos</div>
+        <div class="rumah" id="{{ $rumahB1->id }}" style="top: 370px; left: 100px;">{{ $rumahB1->nama }}</div>
+        <div class="rumah" id="{{ $rumahB2->id }}" style="top: 370px; left: 200px;">{{ $rumahB2->nama }}</div>
+        <div class="rumah" id="{{ $rumahB3->id }}" style="top: 470px; left: 200px;">{{ $rumahB3->nama }}</div>
 
         <!-- Samping Kanan -->
-        <div class="rumah" style="top: 50px; left: 420px;">C1</div>
-        <div class="rumah" style="top: 150px; left: 420px;">C2</div>
-        <div class="rumah" style="top: 150px; left: 520px;">C3</div>
-        <div class="rumah" style="top: 150px; left: 620px;">C4</div>
-        <div class="rumah" style="top: 150px; left: 720px;">C5</div>
+        <div class="rumah" id="{{ $rumahC1->id }}" style="top: 50px; left: 420px;">{{ $rumahC1->nama }}</div>
+        <div class="rumah"  id="{{ $rumahC2->id }}" style="top: 150px; left: 420px;">{{ $rumahC2->nama }}</div>
+        <div class="rumah" id="{{ $rumahC3->id }}" style="top: 150px; left: 520px;">{{ $rumahC3->nama }}</div>
+        <div class="rumah" id="{{ $rumahC4->id }}" style="top: 150px; left: 620px;">{{ $rumahC4->nama }}</div>
+        <div class="rumah" id="{{ $rumahC5->id }}" style="top: 150px; left: 720px;">{{ $rumahC5->nama }}</div>
         <!-- Bawah -->
 
-        <div class="rumah" style="top: 370px; left: 420px;">C2</div>
-        <div class="rumah" style="top: 370px; left: 520px;">C3</div>
-        <div class="rumah" style="top: 370px; left: 620px;">C4</div>
-        <div class="rumah" style="top: 370px; left: 720px;">C5</div>
-        <div class="rumah" style="top: 470px; left: 420px;">B3</div>
+        <div class="rumah" id="{{ $rumahD1->id }}" style="top: 370px; left: 420px;">{{ $rumahD1->nama }}</div>
+        <div class="rumah" id="{{ $rumahD2->id }}" style="top: 370px; left: 520px;">{{ $rumahD2->nama }}</div>
+        <div class="rumah" id="{{ $rumahD3->id }}" style="top: 370px; left: 620px;">{{ $rumahD3->nama }}</div>
+        <div class="rumah" id="{{ $rumahD4->id }}" style="top: 370px; left: 720px;">{{ $rumahD4->nama }}</div>
+        <div class="rumah" id="{{ $rumahD4->id }}" style="top: 470px; left: 420px;">{{ $rumahD5->nama }}</div>
     </div>
 </body>
 

@@ -90,3 +90,18 @@ body {
 .back-button a:hover {
     color: #007BFF;
 }
+.pos {
+    position: absolute; /* Posisi tetap */
+    width: 60px; /* Lebar kotak */
+    height: 60px; /* Tinggi kotak */
+    background-color: #FFD700; /* Warna kuning untuk pos */
+    color: #000; /* Warna teks */
+    display: flex; /* Untuk memposisikan teks di tengah */
+    justify-content: center; /* Teks di tengah secara horizontal */
+    align-items: center; /* Teks di tengah secara vertikal */
+    border: 2px solid #333; /* Garis tepi hitam */
+    border-radius: 10px; /* Membuat sudut sedikit melengkung */
+    font-weight: bold; /* Teks tebal */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Bayangan untuk efek kedalaman */
+    font-size: 12px; /* Ukuran teks */
+}
