@@ -25,10 +25,10 @@
 
         <!-- Rumah-rumah -->
         <!-- Atas -->
-        <a href="{{ route('landingpage', ['id' => $rumahA1->id]) }}" class="rumah" id="{{ $rumahA1->id }}"
-            style="top: 150px; left: 200px;">
+        <a href="{{ route('form_booking', $rumahA1->id) }}" class="rumah" style="top: 150px; left: 200px;">
             {{ $rumahA1->nama }}
         </a>
+
 
         <div class="rumah" id="{{ $rumahA2->id }}" style="top: 50px; left: 200px;">{{ $rumahA2->nama }}</div>
 

@@ -10,11 +10,16 @@ class LandingpagePelangganController extends Controller
 {
     public function index()
     {
-        return view('landingpage.pelanggan.index');
+        
+        $pelanggans = DenahPerum::latest()->take(3)->get();
+        // Mengirim data pelanggan ke view
+        return view('landingpage.pelanggan.index', compact('pelanggans'));
     }
 
     public function indexDenah()
     {
+
+        $rumah = DenahPerum::all();
         $rumahA1 = DenahPerum::where('id', '1')->first();
         $rumahA2 = DenahPerum::where('id', '2')->first();
         $rumahB1 = DenahPerum::where('id', '3')->first();
@@ -47,6 +52,7 @@ class LandingpagePelangganController extends Controller
             'rumahD3',
             'rumahD4',
             'rumahD5',
+            'rumah'
         ));
     }
 }

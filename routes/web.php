@@ -45,4 +45,6 @@ Route::get('/form_bangunan', [DenahPerumController::class, 'create'])->name('for
 //pelanggan
 Route::get('/denah', [LandingpagePelangganController::class, 'indexDenah'])->name('denah');
 Route::get('/transaksi', [TransaksiController::class, 'index'])->name('transaksi');
+
 Route::get('/booking', [BookingController::class, 'index'])->name('booking');
+Route::get('/form_booking/{id}', [BookingController::class, 'edit'])->name('form_booking');

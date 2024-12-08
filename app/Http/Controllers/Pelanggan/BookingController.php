@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Pelanggan;
 
 use App\Http\Controllers\Controller;
+use App\Models\Booking;
+use App\Models\DenahPerum;
 use Illuminate\Http\Request;
 
 class BookingController extends Controller
@@ -12,8 +14,9 @@ class BookingController extends Controller
         return view('landingpage.booking.index');
     }
 
-    public function create()
+    public function edit($id)
     {
-        return view('landingpage.booking.form_booking');
+        $booking = DenahPerum::findOrFail($id);
+        return view('landingpage.booking.form_booking', compact('booking'));
     }
 }

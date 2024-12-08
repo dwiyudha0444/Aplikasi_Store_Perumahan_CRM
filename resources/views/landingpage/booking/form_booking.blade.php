@@ -82,22 +82,23 @@
                                     <form action="" method="POST">
                                         @csrf
                                         <div class="form-group">
-                                            <label for="nama">Nama</label>
-                                            <input type="text" id="nama" name="nama" class="form-control"
-                                                placeholder="Masukkan Nama" required>
+                                            <label for="id_users">Nama</label>
+                                            <input type="text" id="id_users" name="id_users" class="form-control"
+                                                placeholder="Masukkan Nama" value="{{ $booking->id }} required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="email">Email</label>
-                                            <input type="email" id="email" name="email" class="form-control"
-                                                placeholder="Masukkan Email" required>
+                                            <label for="id_bangunan">Email</label>
+                                            <input type="id_bangunan" id="id_bangunan" name="id_bangunan" class="form-control"
+                                                placeholder="Bangunan" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="alamat">Alamat</label>
-                                            <textarea id="alamat" name="alamat" class="form-control" rows="3" placeholder="Masukkan Alamat"></textarea>
+                                            <label for="titik_lokasi">Telepon</label>
+                                            <input type="text" id="titik_lokasi" name="titik_lokasi" class="form-control"
+                                                placeholder="Masukkan Nomor Telepon">
                                         </div>
                                         <div class="form-group">
-                                            <label for="telepon">Telepon</label>
-                                            <input type="text" id="telepon" name="telepon" class="form-control"
+                                            <label for="blok">Telepon</label>
+                                            <input type="text" id="blok" name="blok" class="form-control"
                                                 placeholder="Masukkan Nomor Telepon">
                                         </div>
                                         <div class="form-group text-center">
