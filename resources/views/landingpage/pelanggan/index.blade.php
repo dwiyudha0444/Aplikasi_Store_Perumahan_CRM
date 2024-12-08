@@ -35,7 +35,7 @@
                             <ul class="nk-menu">
                                 <li class="nk-menu-item"><a class="scrollto nav-link nk-menu-link" href="#home">Home</a></li>
                                 <li class="nk-menu-item"><a class="scrollto nav-link nk-menu-link" href="{{ route('transaksi')}}">Transaksi</a></li>
-                                <li class="nk-menu-item"><a class="scrollto nav-link nk-menu-link" href="#symptoms">Symptoms</a></li>
+                                <li class="nk-menu-item"><a class="scrollto nav-link nk-menu-link" href="{{ route('booking')}}">Booking</a></li>
                                 <li class="nk-menu-item"><a class="nav-link nk-menu-link nk-menu-toggle" href="#">More</a>
                                     <ul class="nk-menu-dropdown nk-menu-sub">
                                         <li class="nk-menu-item"><a class="nav-link nk-menu-link" href="index.html">Landing V1</a></li>
