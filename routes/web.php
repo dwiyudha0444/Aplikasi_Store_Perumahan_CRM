@@ -6,6 +6,7 @@ use App\Http\Controllers\auth\LoginController;
 use App\Http\Controllers\auth\RegisterController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\landingpageController;
+use App\Http\Controllers\Pelanggan\BookingController;
 use App\Http\Controllers\Pelanggan\LandingpagePelangganController;
 use App\Http\Controllers\Pelanggan\TransaksiController;
 
@@ -44,3 +45,4 @@ Route::get('/form_bangunan', [DenahPerumController::class, 'create'])->name('for
 //pelanggan
 Route::get('/denah', [LandingpagePelangganController::class, 'indexDenah'])->name('denah');
 Route::get('/transaksi', [TransaksiController::class, 'index'])->name('transaksi');
+Route::get('/booking', [BookingController::class, 'index'])->name('booking');

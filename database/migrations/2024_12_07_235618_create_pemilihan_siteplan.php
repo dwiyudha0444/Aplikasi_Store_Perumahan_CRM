@@ -11,18 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('bangunan', function (Blueprint $table) {
+        Schema::create('pemilihan_siteplan', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
-            $table->string('deskripsi');
-            $table->string('jalan');
+            $table->bigInteger('id_users')->unsigned()->nullable();
+            $table->bigInteger('id_bangunan')->unsigned()->nullable();
+            $table->string('titik_lokasi');
             $table->string('blok');
-            $table->string('nomer');
-            $table->string('panjang');
-            $table->string('luas');
-            $table->integer('harga');
-            $table->string('foto');
-            $table->string('fasilitas');
             $table->timestamps();
         });
     }
@@ -32,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('bangunan');
+        Schema::dropIfExists('pemilihan_siteplan');
     }
 };
