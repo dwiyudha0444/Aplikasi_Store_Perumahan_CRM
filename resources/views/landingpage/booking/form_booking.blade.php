@@ -84,22 +84,17 @@
                                         <div class="form-group">
                                             <label for="id_users">Nama</label>
                                             <input type="text" id="id_users" name="id_users" class="form-control"
-                                                placeholder="Masukkan Nama" value="{{ $booking->id }} required>
+                                                placeholder="Masukkan Nama" value="{{ $booking->id }}" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="id_bangunan">Email</label>
+                                            <label for="id_bangunan">Nama Bangunan</label>
                                             <input type="id_bangunan" id="id_bangunan" name="id_bangunan" class="form-control"
-                                                placeholder="Bangunan" required>
+                                                placeholder="Bangunan" value="{{ $booking->nama }}" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="titik_lokasi">Telepon</label>
-                                            <input type="text" id="titik_lokasi" name="titik_lokasi" class="form-control"
-                                                placeholder="Masukkan Nomor Telepon">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="blok">Telepon</label>
+                                            <label for="blok">Blok</label>
                                             <input type="text" id="blok" name="blok" class="form-control"
-                                                placeholder="Masukkan Nomor Telepon">
+                                                placeholder="Masukkan Blok" value="{{ $booking->blok }}" >
                                         </div>
                                         <div class="form-group text-center">
                                             <button type="submit" class="btn btn-primary">Simpan</button>
