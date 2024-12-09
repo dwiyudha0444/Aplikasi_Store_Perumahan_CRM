@@ -12,7 +12,6 @@ class Booking extends Model
     protected $fillable = [
         'id_users',
         'id_bangunan',
-        'titik_lokasi',
         'blok',
     ];
 }

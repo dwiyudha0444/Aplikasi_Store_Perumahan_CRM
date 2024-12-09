@@ -39,12 +39,12 @@
                         <nav class="nk-navbar-menu" id="navbar-menu">
                             <ul class="nk-menu">
                                 <li class="nk-menu-item"><a class="scrollto nav-link nk-menu-link"
-                                        href="{{route('landingpage_pelanggan')}}">Home</a></li>
+                                        href="{{ route('landingpage_pelanggan') }}">Home</a></li>
                                 <li class="nk-menu-item"><a class="scrollto nav-link nk-menu-link"
                                         href="{{ route('transaksi') }}">Transaksi</a></li>
                                 <li class="nk-menu-item"><a class="scrollto nav-link nk-menu-link"
                                         href="{{ route('booking') }}">Booking</a></li>
-                                
+
                             </ul>
                             <ul class="nk-menu-btns">
                                 <li class="nk-menu-item"><a href="#" class="btn btn-sm scrollto nav-link">Do &amp;
@@ -79,28 +79,32 @@
                                     <h4>Form Input Data</h4>
                                 </div>
                                 <div class="card-body">
-                                    <form action="" method="POST">
+                                    <form action="{{ route('booking.store') }}" method="POST">
                                         @csrf
                                         <div class="form-group">
                                             <label for="id_users">Nama</label>
                                             <input type="text" id="id_users" name="id_users" class="form-control"
-                                                placeholder="Masukkan Nama" value="{{ $booking->id }}" required>
+                                                placeholder="Masukkan Nama"
+                                                value="{{ old('id_users', $booking->id ?? '') }}" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="id_bangunan">Nama Bangunan</label>
-                                            <input type="id_bangunan" id="id_bangunan" name="id_bangunan" class="form-control"
-                                                placeholder="Bangunan" value="{{ $booking->nama }}" required>
+                                            <input type="text" id="id_bangunan" name="id_bangunan"
+                                                class="form-control" placeholder="Nama Bangunan"
+                                                value="{{ old('id_bangunan', $booking->nama ?? '') }}" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="blok">Blok</label>
                                             <input type="text" id="blok" name="blok" class="form-control"
-                                                placeholder="Masukkan Blok" value="{{ $booking->blok }}" >
+                                                placeholder="Masukkan Blok"
+                                                value="{{ old('blok', $booking->blok ?? '') }}">
                                         </div>
                                         <div class="form-group text-center">
                                             <button type="submit" class="btn btn-primary">Simpan</button>
                                             <button type="reset" class="btn btn-secondary">Reset</button>
                                         </div>
                                     </form>
+
                                 </div>
                             </div>
                         </div>
@@ -192,7 +196,8 @@
                                         <br class="d-none d-lg-block">
                                         All the information based on WHO, NHS and CDC website. Information on our
                                         website is meant for awareness, if you have any doubt please verify from
-                                        respective site.</p>
+                                        respective site.
+                                    </p>
                                 </div>
                             </div>
                         </div>
