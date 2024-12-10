@@ -45,6 +45,7 @@
                 <div class="frm-input">
                     <select name="role" class="frm-inp">
                         <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Admin</option>
+                        <option value="marketing" {{ old('role') == 'marketing' ? 'selected' : '' }}>Marketing</option>
                         <option value="pelanggan" {{ old('role') == 'pelanggan' ? 'selected' : '' }}>Pelanggan</option>
                     </select>
                     @error('role')

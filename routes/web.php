@@ -1,11 +1,13 @@
 <?php
 
 use App\Http\Controllers\admin\DashboardAdminController;
+use App\Http\Controllers\admin\DashboardMarketingController;
 use App\Http\Controllers\admin\DenahPerumController;
 use App\Http\Controllers\auth\LoginController;
 use App\Http\Controllers\auth\RegisterController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\landingpageController;
+use App\Http\Controllers\Marketing\PromosiMarketingController;
 use App\Http\Controllers\Pelanggan\BookingController;
 use App\Http\Controllers\Pelanggan\LandingpagePelangganController;
 use App\Http\Controllers\Pelanggan\TransaksiController;
@@ -37,6 +39,10 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 //dashboard admin
 Route::get('/dashboard_admin', [DashboardAdminController::class, 'index'])->name('dashboard_admin');
+
+Route::get('/dashboard_marketing', [DashboardMarketingController::class, 'index'])->name('dashboard_marketing');
+Route::get('/promosi_marketing', [PromosiMarketingController::class, 'index'])->name('promosi_marketing');
+
 
 //denah perum
 Route::get('/denah_perum', [DenahPerumController::class, 'index'])->name('denah_perum');

@@ -32,6 +32,8 @@ class LoginController extends Controller
                 return redirect()->route('dashboard_admin');
             } elseif (Auth::user()->role == 'pelanggan') {
                 return redirect()->route('landingpage_pelanggan');
+            }  elseif (Auth::user()->role == 'marketing') {
+                return redirect()->route('dashboard_marketing');
             } 
         } else {
             
