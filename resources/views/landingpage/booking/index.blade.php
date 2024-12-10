@@ -25,10 +25,10 @@
                     <div class="nk-navbar-wrap">
                         <div class="nk-navbar-logo logo">
                             <a href="./" class="logo-link">
-                                <img class="logo-dark" src="images/logo-dark.png" srcset="images/logo-dark2x.png 2x"
-                                    alt="logo">
-                                <img class="logo-light" src="images/logo-white.png" srcset="images/logo-white2x.png 2x"
-                                    alt="logo">
+                                <img class="logo-dark" src="{{ asset('landingpage/images/logo-dark.png') }}"
+                                    srcset="{{ asset('landingpage/images/logo-dark2x.png 2x') }}" alt="logo">
+                                <img class="logo-light" src="{{ asset('landingpage/images/logo-white.png') }}"
+                                    srcset="{{ asset('landingpage/images/logo-white2x.png 2x') }}" alt="logo">
                             </a>
                         </div><!-- .nk-navbar-logo -->
                         <div class="nk-navbar-toggle d-lg-none">
@@ -39,12 +39,12 @@
                         <nav class="nk-navbar-menu" id="navbar-menu">
                             <ul class="nk-menu">
                                 <li class="nk-menu-item"><a class="scrollto nav-link nk-menu-link"
-                                        href="{{route('landingpage_pelanggan')}}">Home</a></li>
+                                        href="{{ route('landingpage_pelanggan') }}">Home</a></li>
                                 <li class="nk-menu-item"><a class="scrollto nav-link nk-menu-link"
                                         href="{{ route('transaksi') }}">Transaksi</a></li>
                                 <li class="nk-menu-item"><a class="scrollto nav-link nk-menu-link"
                                         href="{{ route('booking') }}">Booking</a></li>
-                                
+
                             </ul>
                             <ul class="nk-menu-btns">
                                 <li class="nk-menu-item"><a href="#" class="btn btn-sm scrollto nav-link">Do &amp;
@@ -78,35 +78,27 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Negara</th>
-                                    <th>Kasus Positif</th>
-                                    <th>Kasus Sembuh</th>
-                                    <th>Kasus Meninggal</th>
+                                    <th>Nama Pelanggan</th>
+                                    <th>Nama Bangunan</th>
+                                    <th>Blok</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Indonesia</td>
-                                    <td>1,234,567</td>
-                                    <td>1,000,000</td>
-                                    <td>50,000</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Amerika Serikat</td>
-                                    <td>2,345,678</td>
-                                    <td>2,000,000</td>
-                                    <td>100,000</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>India</td>
-                                    <td>3,456,789</td>
-                                    <td>3,000,000</td>
-                                    <td>150,000</td>
-                                </tr>
-                                <!-- Tambahkan baris lainnya sesuai kebutuhan -->
+                                @foreach ($booking as $use)
+                                    <tr>
+                                        <td>1</td>
+                                        <td>{{ $use->id_users }}</td>
+                                        <td>{{ $use->id_bangunan }}</td>
+                                        <td>{{ $use->blok }}</td>
+                                        <td class="text-center align-middle" >
+                                            <a href="{{ route('transaksi', ['id' => $use->id]) }}"
+                                                class="btn btn-primary">
+                                                Bayar Sekarang
+                                            </a>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -196,7 +188,8 @@
                                         <br class="d-none d-lg-block">
                                         All the information based on WHO, NHS and CDC website. Information on our
                                         website is meant for awareness, if you have any doubt please verify from
-                                        respective site.</p>
+                                        respective site.
+                                    </p>
                                 </div>
                             </div>
                         </div>

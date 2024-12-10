@@ -13,7 +13,7 @@ class LandingpagePelangganController extends Controller
         
         $pelanggans = DenahPerum::latest()->take(3)->get();
         // Mengirim data pelanggan ke view
-        return view('landingpage.pelanggan.index', compact('pelanggans'));
+        return view('landingpage.pelanggan.home', compact('pelanggans'));
     }
 
     public function indexDenah()

@@ -10,9 +10,14 @@ use Illuminate\Http\Request;
 class BookingController extends Controller
 {
     public function index()
-    {
-        return view('landingpage.booking.index');
-    }
+{
+    // Ambil data dari model Booking, urutkan berdasarkan created_at secara descending
+    $booking = Booking::orderBy('created_at', 'desc')->get();
+
+    // Kirim data ke view
+    return view('landingpage.booking.index', compact('booking'));
+}
+
 
     public function edit($id)
     {
@@ -30,6 +35,7 @@ class BookingController extends Controller
 
         Booking::create($validated);
 
-        return redirect()->back()->with('success', 'Data berhasil disimpan!');
+        return redirect()->route('booking')->with('success', 'Data berhasil disimpan!');
+
     }
 }

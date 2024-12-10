@@ -25,10 +25,10 @@
                     <div class="nk-navbar-wrap">
                         <div class="nk-navbar-logo logo">
                             <a href="./" class="logo-link">
-                                <img class="logo-dark" src="images/logo-dark.png" srcset="images/logo-dark2x.png 2x"
-                                    alt="logo">
-                                <img class="logo-light" src="images/logo-white.png" srcset="images/logo-white2x.png 2x"
-                                    alt="logo">
+                                <img class="logo-dark" src="{{ asset('landingpage/images/logo-dark.png') }}"
+                                    srcset="{{ asset('landingpage/images/logo-dark2x.png 2x') }}" alt="logo">
+                                <img class="logo-light" src="{{ asset('landingpage/images/logo-white.png') }}"
+                                    srcset="{{ asset('landingpage/images/logo-white2x.png 2x') }}" alt="logo">
                             </a>
                         </div><!-- .nk-navbar-logo -->
                         <div class="nk-navbar-toggle d-lg-none">
@@ -91,7 +91,7 @@
                                             <label for="id_bangunan">Nama Bangunan</label>
                                             <input type="text" id="id_bangunan" name="id_bangunan"
                                                 class="form-control" placeholder="Nama Bangunan"
-                                                value="{{ old('id_bangunan', $booking->nama ?? '') }}" required>
+                                                value="{{ old('id_bangunan', $booking->id ?? '') }}" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="blok">Blok</label>
