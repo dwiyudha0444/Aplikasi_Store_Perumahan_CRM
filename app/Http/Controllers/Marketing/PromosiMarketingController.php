@@ -13,4 +13,9 @@ class PromosiMarketingController extends Controller
         $promosi = Promosi::orderBy('created_at', 'desc')->get();
         return view('dashboard.marketing.promosi.index', compact('promosi'));
     }
+
+    public function create()
+    {
+        return view('dashboard.marketing.promosi.form');
+    }
 }

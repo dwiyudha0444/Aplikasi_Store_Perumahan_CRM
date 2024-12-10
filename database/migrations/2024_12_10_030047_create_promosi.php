@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('jenis_promosi');
             $table->string('keterangan');
             $table->date('batas_waktu');
+            $table->string('kode');
             $table->timestamps();
         });
     }

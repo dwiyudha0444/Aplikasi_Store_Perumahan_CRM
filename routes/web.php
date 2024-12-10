@@ -42,6 +42,7 @@ Route::get('/dashboard_admin', [DashboardAdminController::class, 'index'])->name
 
 Route::get('/dashboard_marketing', [DashboardMarketingController::class, 'index'])->name('dashboard_marketing');
 Route::get('/promosi_marketing', [PromosiMarketingController::class, 'index'])->name('promosi_marketing');
+Route::get('/promosi_marketing/form', [PromosiMarketingController::class, 'create'])->name('promosi_marketing_form');
 
 
 //denah perum
