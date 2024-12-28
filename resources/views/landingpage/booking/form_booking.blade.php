@@ -83,21 +83,36 @@
                                         @csrf
                                         <div class="form-group">
                                             <label for="id_users">Nama</label>
-                                            <input type="text" id="id_users" name="id_users" class="form-control"
-                                                placeholder="Masukkan Nama"
-                                                value="{{ old('id_users', $booking->id ?? '') }}" required>
+                                            <input type="text" id="id_users_display" class="form-control"
+                                                value="{{ Auth::user()->name }}" readonly>
+                                            <!-- Menampilkan nama user -->
+                                            <input type="hidden" id="id_users" name="id_users"
+                                                value="{{ Auth::user()->id }}"> <!-- Mengirimkan ID user -->
                                         </div>
+
                                         <div class="form-group">
-                                            <label for="id_bangunan">Nama Bangunan</label>
-                                            <input type="text" id="id_bangunan" name="id_bangunan"
-                                                class="form-control" placeholder="Nama Bangunan"
-                                                value="{{ old('id_bangunan', $booking->id ?? '') }}" required>
+                                            <label for="id_bangunan_display">Nama Bangunan</label>
+                                            <!-- Menampilkan nama bangunan -->
+                                            <input type="text" id="id_bangunan_display" class="form-control"
+                                                value="{{ old('nama_bangunan', $bangunan->nama ?? '') }}"
+                                                placeholder="Nama Bangunan" readonly>
+                                            <!-- Mengirimkan ID bangunan -->
+                                            <input type="hidden" id="id_bangunan" name="id_bangunan"
+                                                value="{{ old('id_bangunan', $bangunan->id ?? '') }}">
                                         </div>
+
+
                                         <div class="form-group">
                                             <label for="blok">Blok</label>
                                             <input type="text" id="blok" name="blok" class="form-control"
                                                 placeholder="Masukkan Blok"
-                                                value="{{ old('blok', $booking->blok ?? '') }}">
+                                                value="{{ old('blok', $bangunan->blok ?? '') }}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="blok">Jalan</label>
+                                            <input type="text" id="jalan" name="jalan" class="form-control"
+                                                placeholder="Masukkan Jalan"
+                                                value="{{ old('jalan', $bangunan->blok ?? '') }}">
                                         </div>
                                         <div class="form-group text-center">
                                             <button type="submit" class="btn btn-primary">Simpan</button>

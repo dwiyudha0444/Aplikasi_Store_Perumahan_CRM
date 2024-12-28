@@ -11,14 +11,20 @@ class DenahPerum extends Model
 
     protected $fillable = [
         'nama',
-        'ijazah',
-        'transkip_nilai',
-        'penilaian_prestasi_kerja',
-        'jadwal_pendidikan',
+        'deskripsi',
+        'jalan',
+        'blok',
+        'nomer',
+        'panjang',
+        'luas',
+        'harga',
+        'foto',
         'status',
-        'peguruan_tinggi',
-        'jurusan',
-        'alamat',
-        'keterangan'
+        'fasilitas'
     ];
+
+    public function booking()
+    {
+        return $this->hasMany(Booking::class, 'id_users', 'id');
+    }
 }

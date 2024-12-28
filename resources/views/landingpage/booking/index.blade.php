@@ -13,9 +13,82 @@
     <!-- Bundle and Base CSS -->
     <link rel="stylesheet" href="{{ asset('landingpage/assets/css/bundle.css?ver=112') }}">
     <link rel="stylesheet" href="{{ asset('landingpage/assets/css/styles.css?ver=112') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </head>
 
 <body class="nk-body">
+
+ <script>
+    $(document).ready(function() {
+        // Event listener untuk tombol "Bayar Sekarang"
+        $('.btn-bayar').on('click', function() {
+            var transaksiId = $(this).data('id'); // Ambil ID dari data-id
+            $('#modalContent').html('<p>Loading...</p>'); // Reset modal content
+            $('#bayarModal').modal('show'); // Tampilkan modal
+
+            // AJAX untuk mengambil data transaksi
+            $.ajax({
+                url: '/transaksi/detail/' + transaksiId, // Ganti dengan URL endpoint yang sesuai
+                method: 'GET',
+                success: function(response) {
+                    // Tampilkan data ke modal sebagai form input
+                    $('#modalContent').html(`
+                        <form id="paymentForm">
+                            <div class="form-group">
+                                <label for="id_users">Nama Pelanggan</label>
+                                <input type="text" class="form-control" id="id_users" name="id_users" value="${response.id_users}" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="nama_bangunan">Nama Bangunan</label>
+                                <input type="text" class="form-control" id="nama_bangunan" name="nama_bangunan" value="${response.nama_bangunan}" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="blok">Blok</label>
+                                <input type="text" class="form-control" id="blok" name="blok" value="${response.blok}" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="jumlah_bayar">Jumlah Bayar</label>
+                                <input type="text" class="form-control" id="jumlah_bayar" name="jumlah_bayar" value="Rp ${response.jumlah_bayar}" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="jumlah_bayar_input">Masukkan Jumlah Bayar</label>
+                                <input type="number" class="form-control" id="jumlah_bayar_input" name="jumlah_bayar_input" placeholder="Masukkan jumlah bayar">
+                            </div>
+                        </form>
+                    `);
+                },
+                error: function() {
+                    $('#modalContent').html('<p>Terjadi kesalahan saat mengambil data. Silakan coba lagi.</p>');
+                }
+            });
+        });
+
+        // Event listener untuk tombol "Bayar" dalam modal
+        $('#confirmPayment').on('click', function() {
+            // Ambil data dari form
+            var formData = $('#paymentForm').serialize();
+            
+            // Lakukan AJAX POST untuk melakukan pembayaran
+            $.ajax({
+                url: '/transaksi/bayar', // Ganti dengan URL endpoint yang sesuai untuk pembayaran
+                method: 'POST',
+                data: formData,
+                success: function(response) {
+                    alert('Pembayaran berhasil dilakukan!');
+                    $('#bayarModal').modal('hide'); // Tutup modal
+                },
+                error: function() {
+                    alert('Terjadi kesalahan saat melakukan pembayaran. Silakan coba lagi.');
+                }
+            });
+        });
+    });
+</script>
+
+
 
     <div class="nk-wrap">
         <header class="nk-header bg-light has-overlay" id="home">
@@ -81,6 +154,7 @@
                                     <th>Nama Pelanggan</th>
                                     <th>Nama Bangunan</th>
                                     <th>Blok</th>
+                                    <th>Harga DP</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -88,15 +162,16 @@
                                 @foreach ($booking as $use)
                                     <tr>
                                         <td>1</td>
-                                        <td>{{ $use->id_users }}</td>
-                                        <td>{{ $use->id_bangunan }}</td>
+                                        <td>{{ $use->user->name }}</td>
+                                        <td>{{ $use->bangunan->nama }}</td>
+                                        <td>{{ $use->bangunan->harga }}</td>
                                         <td>{{ $use->blok }}</td>
-                                        <td class="text-center align-middle" >
-                                            <a href="{{ route('transaksi', ['id' => $use->id]) }}"
-                                                class="btn btn-primary">
+                                        <td class="text-center align-middle">
+                                            <button class="btn btn-primary btn-bayar" data-id="{{ $use->id }}">
                                                 Bayar Sekarang
-                                            </a>
+                                            </button>
                                         </td>
+
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -106,68 +181,56 @@
             </section>
         </main>
 
+        <!-- Modal -->
+        <div class="modal fade" id="bayarModal" tabindex="-1" role="dialog" aria-labelledby="bayarModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form action="/transaksi/bayar" method="POST" id="paymentForm">
+                        <!-- Tambahkan CSRF Token jika menggunakan Laravel -->
+                        {{ csrf_field() }}
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="bayarModalLabel">Konfirmasi Pembayaran</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div id="modalContent">
+                                <div class="form-group">
+                                    <label for="id_users">ID Pengguna</label>
+                                    <input type="text" class="form-control" id="id_users" name="id_users"
+                                        readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="id_bangunan">ID Bangunan</label>
+                                    <input type="text" class="form-control" id="id_bangunan" name="id_bangunan"
+                                        readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="blok">Blok</label>
+                                    <input type="text" class="form-control" id="blok" name="blok"
+                                        >
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                            <button type="submit" class="btn btn-primary">Bayar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
         <footer class="nk-footer bg-dark tc-light has-overlay">
             <div class="overlay shape shape-c"></div><!-- Overlay Shape -->
             <section class="section section-footer section-m tc-light">
                 <div class="container">
-                    <div class="nk-footer-top">
-                        <div class="row g-gs gy-m">
-                            <div class="col-lg-3 col-md-9 mr-auto">
-                                <div class="wgs wgs-about">
-                                    <div class="wgs-logo logo">
-                                        <a href="./" class="logo-link">
-                                            <img src="images/logo-white.png" srcset="images/logo-white2x.png 2x"
-                                                alt="logo">
-                                        </a>
-                                    </div>
-                                    <div class="wgs-about-text">
-                                        <p>This website is for health information and advice about coronavirus
-                                            (COVID-19), how to prevent and protect yourself from disease.</p>
-                                        <p>Learn about the government response to coronavirus on GOV.UK.</p>
-                                    </div>
-                                    <ul class="wgs-social">
-                                        <li><a href="#"><em class="icon ni ni-facebook-f"></em></a></li>
-                                        <li><a href="#"><em class="icon ni ni-twitter"></em></a></li>
-                                        <li><a href="#"><em class="icon ni ni-youtube-fill"></em></a></li>
-                                    </ul>
-                                </div><!-- .wgs -->
-                            </div><!-- .col -->
-                            <div class="col-sm-4 col-lg-2">
-                                <div class="wgs wgs-menu">
-                                    <h6 class="wgs-title">Quick Link</h6>
-                                    <ul class="wgs-links">
-                                        <li><a class="scrollto" href="#symptoms">Symptoms</a></li>
-                                        <li><a class="scrollto" href="#prevention">Prevention</a></li>
-                                        <li><a class="scrollto" href="#protect">Protect Youself</a></li>
-                                        <li><a class="scrollto" href="#faq">FAQs</a></li>
-                                        <li><a class="scrollto" href="#about">About Corona</a></li>
-                                    </ul>
-                                </div><!-- .wgs -->
-                            </div><!-- .col -->
-                            <div class="col-sm-4 col-lg-3">
-                                <div class="wgs wgs-menu">
-                                    <h6 class="wgs-title">Helpfull link</h6>
-                                    <ul class="wgs-links">
-                                        <li><a href="#">Healthcare Professionals</a></li>
-                                        <li><a href="#">Healthcare Facilities</a></li>
-                                        <li><a href="#">Older Adults & Medical Conditions</a></li>
-                                        <li><a href="#">Repare your Family</a></li>
-                                    </ul>
-                                </div><!-- .wgs -->
-                            </div><!-- .col -->
-                            <div class="col-sm-4 col-lg-2">
-                                <div class="wgs wgs-menu">
-                                    <h6 class="wgs-title">Important Link</h6>
-                                    <ul class="wgs-links">
-                                        <li><a href="#">WHO Website</a></li>
-                                        <li><a href="#">CDC Website</a></li>
-                                        <li><a href="#">NHS Website</a></li>
-                                        <li><a href="#">Harvard Health</a></li>
-                                    </ul>
-                                </div><!-- .wgs -->
-                            </div><!-- .col -->
-                        </div><!-- .row -->
-                    </div><!-- .nk-footer-top -->
                     <div class="nk-footer-bottom">
                         <div class="row align-items-center">
                             <div class="col-md-6">

@@ -56,3 +56,5 @@ Route::get('/transaksi', [TransaksiController::class, 'index'])->name('transaksi
 Route::get('/booking', [BookingController::class, 'index'])->name('booking');
 Route::get('/form_booking/{id}', [BookingController::class, 'edit'])->name('form_booking');
 Route::post('/form_booking', [BookingController::class, 'store'])->name('booking.store');
+
+Route::get('/transaksi/detail/{id}', [TransaksiController::class, 'detail']);

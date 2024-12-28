@@ -13,5 +13,16 @@ class Booking extends Model
         'id_users',
         'id_bangunan',
         'blok',
+        'jalan'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_users', 'id');
+    }
+
+    public function bangunan()
+    {
+        return $this->belongsTo(DenahPerum::class, 'id_bangunan', 'id');
+    }
 }
