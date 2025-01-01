@@ -58,3 +58,4 @@ Route::get('/form_booking/{id}', [BookingController::class, 'edit'])->name('form
 Route::post('/form_booking', [BookingController::class, 'store'])->name('booking.store');
 
 Route::get('/transaksi/detail/{id}', [TransaksiController::class, 'detail']);
+Route::post('/transaksi/bayar', [TransaksiController::class, 'store']);

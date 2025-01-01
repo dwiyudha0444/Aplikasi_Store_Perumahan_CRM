@@ -42,20 +42,13 @@
                                 <input type="text" class="form-control" id="id_users" name="id_users" value="${response.id_users}" readonly>
                             </div>
                             <div class="form-group">
-                                <label for="nama_bangunan">Nama Bangunan</label>
-                                <input type="text" class="form-control" id="nama_bangunan" name="nama_bangunan" value="${response.nama_bangunan}" readonly>
+                                <label for="harga">Kode Promosi (Opsional)</label>
+                                <input type="text" class="form-control" id="promosi" name="promosi" placeholder="Masukkan Kode Promosi">
                             </div>
+                            
                             <div class="form-group">
-                                <label for="blok">Blok</label>
-                                <input type="text" class="form-control" id="blok" name="blok" value="${response.blok}" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label for="jumlah_bayar">Jumlah Bayar</label>
-                                <input type="text" class="form-control" id="jumlah_bayar" name="jumlah_bayar" value="Rp ${response.jumlah_bayar}" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label for="jumlah_bayar_input">Masukkan Jumlah Bayar</label>
-                                <input type="number" class="form-control" id="jumlah_bayar_input" name="jumlah_bayar_input" placeholder="Masukkan jumlah bayar">
+                                <label for="harga">Masukkan Jumlah Bayar</label>
+                                <input type="number" class="form-control" id="harga" name="harga" value=10000000 placeholder="Masukkan jumlah bayar">
                             </div>
                         </form>
                     `);
@@ -165,7 +158,7 @@
                                         <td>{{ $use->user->name }}</td>
                                         <td>{{ $use->bangunan->nama }}</td>
                                         <td>{{ $use->bangunan->harga }}</td>
-                                        <td>{{ $use->blok }}</td>
+                                        <td>10000000</td>
                                         <td class="text-center align-middle">
                                             <button class="btn btn-primary btn-bayar" data-id="{{ $use->id }}">
                                                 Bayar Sekarang
