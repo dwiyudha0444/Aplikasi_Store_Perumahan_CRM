@@ -3,7 +3,7 @@
     <div class="row small-spacing">
         <div class="col-xs-12">
             <div class="box-content">
-                <h4 class="box-title">Default</h4>
+                <h4 class="box-title">Bangunan</h4>
 
                 <a href="{{ route('form_bangunan') }}"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
                         fill="currentColor" title="Tambah Data" class="bi bi-bookmark-plus" viewBox="0 0 16 16">
@@ -16,39 +16,53 @@
                 <div class="table-responsive">
                     <input type="text" id="searchBar" class="form-control" placeholder="Cari...">
                 </div>
+@if (session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
 
+                        @if (session('error'))
+                            <div class="alert alert-danger">
+                                {{ session('error') }}
+                            </div>
+                        @endif
                 <table id="example" class="table table-striped table-bordered display" style="width:100%">
                     <thead>
                         <tr>
+                            <th>No</th>
                             <th>Nama</th>
-                            {{-- <th>Deskripsi</th> --}}
                             <th>Jalan</th>
                             <th>Blok</th>
                             <th>Nomer</th>
                             <th>Panjang</th>
                             <th>Luas</th>
                             <th>Harga</th>
-                            {{-- <th>Foto</th>
-                            <th>Fasilitas</th> --}}
+                            <th>Status</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
+                            <th>No</th>
                             <th>Nama</th>
-                            {{-- <th>Deskripsi</th> --}}
                             <th>Jalan</th>
                             <th>Blok</th>
                             <th>Nomer</th>
                             <th>Panjang</th>
                             <th>Luas</th>
                             <th>Harga</th>
-                            {{-- <th>Foto</th>
-                            <th>Fasilitas</th> --}}
+                            <th>Status</th>
+                            <th>Aksi</th>
                         </tr>
                     </tfoot>
                     <tbody>
+                        @php
+                            $no = 1;
+                        @endphp
                         @foreach ($perum as $row)
                             <tr>
+                                <td>{{ $no++ }}</td>
                                 <td>{{ $row->nama }}</td>
                                 <td>{{ $row->jalan }}</td>
                                 <td>{{ $row->blok }}</td>
@@ -56,6 +70,18 @@
                                 <td>{{ $row->panjang }}</td>
                                 <td>{{ $row->luas }}</td>
                                 <td>{{ $row->harga }}</td>
+                                <td>{{ $row->status }}</td>
+                                <td class="text-center align-middle">
+                                    <a href="{{ route('get_transaksi_update', $row->id) }}"
+                                        class="btn btn-primary btn-sm btn-bayar">
+                                        Detail
+                                    </a>
+                                    <a href="{{ route('denah_edit', $row->id) }}"
+                                        class="btn btn-primary btn-sm btn-bayar">
+                                        Edit
+                                    </a>
+                                </td>
+
                             </tr>
                         @endforeach
                     </tbody>

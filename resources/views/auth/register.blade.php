@@ -10,6 +10,17 @@
 
 <body>
     <div id="single-wrapper">
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        @if (session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
         <form action="{{ route('register') }}" method="POST" class="frm-single">
             @csrf
             <div class="inside">
