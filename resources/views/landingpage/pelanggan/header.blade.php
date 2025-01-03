@@ -24,17 +24,7 @@
                                         href="{{ route('transaksi') }}">Transaksi</a></li>
                                 <li class="nk-menu-item"><a class="scrollto nav-link nk-menu-link"
                                         href="{{ route('booking') }}">Booking</a></li>
-                                <li class="nk-menu-item"><a class="nav-link nk-menu-link nk-menu-toggle"
-                                        href="#">More</a>
-                                    <ul class="nk-menu-dropdown nk-menu-sub">
-                                        <li class="nk-menu-item"><a class="nav-link nk-menu-link"
-                                                href="index.html">Landing V1</a></li>
-                                        <li class="nk-menu-item"><a class="nav-link nk-menu-link"
-                                                href="index-v2.html">Landing V2</a></li>
-                                        <li class="nk-menu-item"><a class="nav-link nk-menu-link"
-                                                href="prevention.html">Inner Page</a></li>
-                                    </ul>
-                                </li>
+                                
                             </ul>
                             <ul class="nk-menu-btns">
                                 <li class="nk-menu-item"><a href=""
@@ -49,24 +39,24 @@
                     <div class="row g-gs align-items-center justify-content-between">
                         <div class="col-lg-5 order-lg-last">
                             <div class="nk-banner-image">
-                                <img src="{{ asset('landingpage/images/gfx/header-a.png') }}" alt="">
+                                {{-- <img src="{{ asset('landingpage/images/gfx/header-a.png') }}" alt=""> --}}
                             </div>
                         </div><!-- .col -->
                         <div class="col-lg-6">
                             <div class="nk-banner-block">
                                 <div class="content">
                                     <h1 class="heading">
-                                        <span>CORONA</span>
+                                        <span>Perumahan</span>
                                         <span class="heading-sm">
-                                            <span class="sup">COVID-19</span>
-                                            <span class="sub">VIRUS</span>
+                                            <span class="sup">Siteplan</span>
+                                            <span class="sub">New</span>
                                         </span>
                                     </h1>
                                     <p>The Coronavirus (COVID-19) was first reported in Wuhan, Hubei,
                                         China in December 2019, the outbreak was later recognized as a
                                         pandemic by the World Health Organization (WHO) on 11 March 2020.</p>
 
-                                    <ul class="nk-banner-btns">
+                                    {{-- <ul class="nk-banner-btns">
                                         <li><a href="#protect" class="btn scrollto"><span>How to Protect</span><em
                                                     class="icon ni ni-shield-half"></em></a></li>
                                         <li><a href="#about" class="btn btn-transparent scrollto"><span>About
@@ -95,7 +85,7 @@
                                         </div>
                                         <div class="status-note">* Last updated: <span
                                                 class="covid-update-time">~</span></div>
-                                    </div><!-- .status -->
+                                    </div><!-- .status --> --}}
                                 </div><!-- .content -->
                             </div><!-- .nk-banner-block -->
                         </div><!-- .col -->

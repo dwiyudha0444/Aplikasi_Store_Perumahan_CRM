@@ -47,8 +47,8 @@
 
                             </ul>
                             <ul class="nk-menu-btns">
-                                <li class="nk-menu-item"><a href="#" class="btn btn-sm scrollto nav-link">Do &amp;
-                                        Don’t</a></li>
+                                <li class="nk-menu-item"><a href=""
+                                        class="btn btn-sm scrollto nav-link">{{ Auth::user()->name }}</a></li>
                             </ul>
                         </nav><!-- .nk-navbar-menu -->
                     </div><!-- .nk-navbar-wrap -->
