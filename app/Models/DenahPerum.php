@@ -27,4 +27,10 @@ class DenahPerum extends Model
     {
         return $this->hasMany(Booking::class, 'id_users', 'id');
     }
+
+    public function transaksi()
+    {
+        return $this->hasMany(Transaksi::class, 'id_bangunan', 'id');
+    }
+
 }

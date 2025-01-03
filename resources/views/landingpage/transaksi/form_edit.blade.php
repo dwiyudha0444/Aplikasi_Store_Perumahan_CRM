@@ -13,10 +13,6 @@
     <!-- Bundle and Base CSS -->
     <link rel="stylesheet" href="{{ asset('landingpage/assets/css/bundle.css?ver=112') }}">
     <link rel="stylesheet" href="{{ asset('landingpage/assets/css/styles.css?ver=112') }}">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
 </head>
 
 <body class="nk-body">
@@ -74,64 +70,105 @@
         </header><!-- .nk-header -->
 
         <main class="nk-pages">
-            <section class="section">
+            <section id="form-section" class="section">
                 <div class="container">
-                    <h2 class="section-title">Data</h2>
-                    <div class="table-responsive">
-                        @if (session('success'))
-                            <div class="alert alert-success">
-                                {{ session('success') }}
-                            </div>
-                        @endif
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                            <div class="card">
+                                <div class="card-header text-center">
+                                    <h4>Form Input Data</h4>
+                                </div>
+                                <div class="card-body">
+                                    <form action="{{ route('transaksi_update', $transaksi->id) }}" method="POST"
+                                        enctype="multipart/form-data">
+                                        @csrf
+                                        @method('PUT') {{-- Spoofing method untuk mendukung PUT --}}
 
-                        @if (session('error'))
-                            <div class="alert alert-danger">
-                                {{ session('error') }}
-                            </div>
-                        @endif
-                        <table class="table table-striped table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Nama Pelanggan</th>
-                                    <th>Nama Bangunan</th>
-                                    <th>Blok</th>
-                                    <th>Harga Bangunan</th>
-                                    <th>Harga DP</th>
-                                    <th>Status</th>
-                                    <th>Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($transaksi as $use)
-                                    <tr>
-                                        <td>1</td>
-                                        <td>{{ $use->user->name }}</td>
-                                        <td>{{ $use->bangunan->nama }}</td>
-                                        <td>{{ $use->blok }}</td>
-                                        <td>Rp. {{ number_format($use->bangunan->harga, 0, ',', '.') }}</td>
-                                        <td>Rp. 10.000.000</td>
-                                        <td>{{ $use->status }}</td>
-                                        <td class="text-center align-middle">
-                                            <a href="{{ route('get_transaksi_update', $use->id) }}"
-                                                class="btn btn-primary btn-bayar">
-                                                Bayar Sekarang
-                                            </a>
-                                        </td>
+                                        <div class="form-group">
+                                            <label for="bukti_bayar">Bukti Bayar</label>
+                                            <input type="file" id="bukti_bayar" name="bukti_bayar"
+                                                class="form-control"
+                                                value="{{ old('bukti_bayar', $transaksi->bukti_bayar ?? '') }}">
+                                        </div>
 
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                        <div class="form-group text-center">
+                                            <button type="submit" class="btn btn-primary">Update</button>
+                                            <button type="reset" class="btn btn-secondary">Reset</button>
+                                        </div>
+                                    </form>
+
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
         </main>
 
+
         <footer class="nk-footer bg-dark tc-light has-overlay">
             <div class="overlay shape shape-c"></div><!-- Overlay Shape -->
             <section class="section section-footer section-m tc-light">
                 <div class="container">
+                    <div class="nk-footer-top">
+                        <div class="row g-gs gy-m">
+                            <div class="col-lg-3 col-md-9 mr-auto">
+                                <div class="wgs wgs-about">
+                                    <div class="wgs-logo logo">
+                                        <a href="./" class="logo-link">
+                                            <img src="images/logo-white.png" srcset="images/logo-white2x.png 2x"
+                                                alt="logo">
+                                        </a>
+                                    </div>
+                                    <div class="wgs-about-text">
+                                        <p>This website is for health information and advice about coronavirus
+                                            (COVID-19), how to prevent and protect yourself from disease.</p>
+                                        <p>Learn about the government response to coronavirus on GOV.UK.</p>
+                                    </div>
+                                    <ul class="wgs-social">
+                                        <li><a href="#"><em class="icon ni ni-facebook-f"></em></a></li>
+                                        <li><a href="#"><em class="icon ni ni-twitter"></em></a></li>
+                                        <li><a href="#"><em class="icon ni ni-youtube-fill"></em></a></li>
+                                    </ul>
+                                </div><!-- .wgs -->
+                            </div><!-- .col -->
+                            <div class="col-sm-4 col-lg-2">
+                                <div class="wgs wgs-menu">
+                                    <h6 class="wgs-title">Quick Link</h6>
+                                    <ul class="wgs-links">
+                                        <li><a class="scrollto" href="#symptoms">Symptoms</a></li>
+                                        <li><a class="scrollto" href="#prevention">Prevention</a></li>
+                                        <li><a class="scrollto" href="#protect">Protect Youself</a></li>
+                                        <li><a class="scrollto" href="#faq">FAQs</a></li>
+                                        <li><a class="scrollto" href="#about">About Corona</a></li>
+                                    </ul>
+                                </div><!-- .wgs -->
+                            </div><!-- .col -->
+                            <div class="col-sm-4 col-lg-3">
+                                <div class="wgs wgs-menu">
+                                    <h6 class="wgs-title">Helpfull link</h6>
+                                    <ul class="wgs-links">
+                                        <li><a href="#">Healthcare Professionals</a></li>
+                                        <li><a href="#">Healthcare Facilities</a></li>
+                                        <li><a href="#">Older Adults & Medical Conditions</a></li>
+                                        <li><a href="#">Repare your Family</a></li>
+                                    </ul>
+                                </div><!-- .wgs -->
+                            </div><!-- .col -->
+                            <div class="col-sm-4 col-lg-2">
+                                <div class="wgs wgs-menu">
+                                    <h6 class="wgs-title">Important Link</h6>
+                                    <ul class="wgs-links">
+                                        <li><a href="#">WHO Website</a></li>
+                                        <li><a href="#">CDC Website</a></li>
+                                        <li><a href="#">NHS Website</a></li>
+                                        <li><a href="#">Harvard Health</a></li>
+                                    </ul>
+                                </div><!-- .wgs -->
+                            </div><!-- .col -->
+                        </div><!-- .row -->
+                    </div><!-- .nk-footer-top -->
                     <div class="nk-footer-bottom">
                         <div class="row align-items-center">
                             <div class="col-md-6">

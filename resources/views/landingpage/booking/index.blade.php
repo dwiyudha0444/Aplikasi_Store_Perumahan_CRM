@@ -51,12 +51,12 @@
                             
                             <div class="form-group">
                                 <label for="harga">Masukkan Jumlah Bayar</label>
-                                <input type="number" class="form-control" id="harga" name="harga" value=10000000 placeholder="Masukkan jumlah bayar">
+                                <input type="number" class="form-control" id="harga" name="harga" value=10000000 placeholder="Masukkan jumlah bayar" readonly>
                             </div>
 
                             <div class="form-group">
                                 <label for="harga">Tanggal Bayar</label>
-                                <input type="date" class="form-control" id="tanggal_bayar" name="tanggal_bayar" value="{{ date('Y-m-d') }}">
+                                <input type="date" class="form-control" id="tanggal_bayar" name="tanggal_bayar" value="{{ date('Y-m-d') }}" readonly>
                             </div>
 
 
@@ -208,7 +208,7 @@
                         <!-- Tambahkan CSRF Token jika menggunakan Laravel -->
                         {{ csrf_field() }}
                         <div class="modal-header">
-                            <h5 class="modal-title" id="bayarModalLabel">Konfirmasi Pembayaran</h5>
+                            <h5 class="modal-title" id="bayarModalLabel">Masukan Kode Promosi (Opsional)</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>

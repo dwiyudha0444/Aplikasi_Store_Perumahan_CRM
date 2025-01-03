@@ -13,8 +13,15 @@ class TransaksiController extends Controller
 {
     public function index()
     {
-        return view('landingpage.transaksi.index');
+        $transaksi = Transaksi::all();
+        return view('landingpage.transaksi.index', compact('transaksi'));
     }
+
+    public function edit($id)
+    {
+        $transaksi = Transaksi::findOrFail($id);
+        return view('landingpage.transaksi.form_edit', compact('transaksi'));
+    }    
 
     public function detail($id)
     {
@@ -46,6 +53,7 @@ class TransaksiController extends Controller
         // Validasi input awal
         $request->validate([
             'id_users' => 'required|string|max:255',
+            'id_bangunan' => 'required|string|max:255',
             'promosi' => 'nullable|min:0', // Kode promosi bisa kosong
             'harga' => 'required|numeric|min:0',
         ]);
@@ -80,7 +88,10 @@ class TransaksiController extends Controller
         // Insert data ke tabel 'transaksi'
         DB::table('transaksi')->insert([
             'id_users' => $request->id_users,
+            'id_bangunan' => $request->id_bangunan,
             'harga' => $hargaakhir,
+            'status' => 'proses',
+            'tanggal_bayar' => now(),
             'promosi' => $request->promosi ?? null, // Jika kosong, kirim null
             'created_at' => now(),
         ]);
@@ -88,4 +99,38 @@ class TransaksiController extends Controller
         return redirect()->route('transaksi')
             ->with('success', 'Transaksi berhasil disimpan.');
     }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'bukti_bayar' => 'required',
+        ]);
+    
+        // Temukan data yang akan diupdate
+        $transaksi = DB::table('transaksi')->where('id', $id)->first();
+    
+        // Variabel untuk menyimpan nama file baru, tapi tetap mempertahankan yang lama
+        
+        $jdwlFile = $transaksi->bukti_bayar;
+    
+        if ($request->hasFile('bukti_bayar')) {
+            if ($jdwlFile && file_exists(public_path('transaksi/assets/bukti_bayar/' . $jdwlFile))) {
+                unlink(public_path('transaksi/assets/bukti_bayar/' . $jdwlFile));
+            }
+            $jdwlFile = 'jadwal_' . time() . '.' . $request->bukti_bayar->extension();
+            $request->bukti_bayar->move(public_path('transaksi/assets/bukti_bayar'), $jdwlFile);
+        }
+
+        // Update data ke tabel 'transaksi' tanpa mengubah file
+        DB::table('transaksi')->where('id', $id)->update([
+            // 'status' => 'verifikasi',
+            'bukti_bayar' => $jdwlFile,
+            'updated_at' => now(),
+        ]);
+    
+        return redirect()->route('transaksi')
+            ->with('success', 'Data Berhasil Diperbarui');
+    }
+    
+
 }

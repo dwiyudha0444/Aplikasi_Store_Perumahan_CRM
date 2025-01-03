@@ -51,7 +51,7 @@ Route::get('/form_bangunan', [DenahPerumController::class, 'create'])->name('for
 
 //pelanggan
 Route::get('/denah', [LandingpagePelangganController::class, 'indexDenah'])->name('denah');
-Route::get('/transaksi', [TransaksiController::class, 'index'])->name('transaksi');
+Route::get('/transaksi1', [TransaksiController::class, 'index'])->name('transaksi');
 
 Route::get('/booking', [BookingController::class, 'index'])->name('booking');
 Route::get('/form_booking/{id}', [BookingController::class, 'edit'])->name('form_booking');
@@ -59,3 +59,6 @@ Route::post('/form_booking', [BookingController::class, 'store'])->name('booking
 
 Route::get('/transaksi/detail/{id}', [TransaksiController::class, 'detail']);
 Route::post('/transaksi/bayar', [TransaksiController::class, 'store']);
+
+Route::get('/transaksi_update/{id}', [TransaksiController::class, 'edit'])->name('get_transaksi_update');
+Route::put('/transaksi_update_/{id}', [TransaksiController::class, 'update'])->name('transaksi_update');
