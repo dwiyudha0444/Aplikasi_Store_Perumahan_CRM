@@ -108,7 +108,7 @@
                                         <td>1</td>
                                         <td>{{ $use->user->name }}</td>
                                         <td>{{ $use->bangunan->nama }}</td>
-                                        <td>{{ $use->blok }}</td>
+                                        <td>{{ $use->bangunan->blok }}</td>
                                         <td>Rp. {{ number_format($use->bangunan->harga, 0, ',', '.') }}</td>
                                         <td>Rp. 10.000.000</td>
                                         <td>{{ $use->status }}</td>

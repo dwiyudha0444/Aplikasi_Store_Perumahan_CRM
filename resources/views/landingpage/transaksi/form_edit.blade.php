@@ -91,11 +91,29 @@
                                                 value="{{ old('bukti_bayar', $transaksi->bukti_bayar ?? '') }}">
                                         </div>
 
+                                        <div class="form-group">
+                                            <input type="hidden" id="status" name="status" value="verifikasi">
+                                        </div>
+                                        
+                                        
+
+                                        <div class="form-group">
+                                            <input type="hidden" id="blok" name="blok" value="{{ $transaksi->bangunan->blok }}">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="metode_pembayaran">Metode Pembayaran</label>
+                                            <input type="text" id="metode_pembayaran" name="metode_pembayaran"
+                                                class="form-control" value="transfer" readonly>
+                                        </div>
+
+
                                         <div class="form-group text-center">
                                             <button type="submit" class="btn btn-primary">Update</button>
                                             <button type="reset" class="btn btn-secondary">Reset</button>
                                         </div>
                                     </form>
+
 
 
                                 </div>

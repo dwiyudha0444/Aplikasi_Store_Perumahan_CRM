@@ -102,35 +102,48 @@ class TransaksiController extends Controller
 
     public function update(Request $request, $id)
     {
+        // Validasi input
         $request->validate([
-            'bukti_bayar' => 'required',
+            'bukti_bayar' => 'nullable|file|mimes:jpg,png,pdf|max:2048',
+            'status' => 'required',
+            'metode_pembayaran' => 'required',
+            'blok' => 'required',
         ]);
     
         // Temukan data yang akan diupdate
         $transaksi = DB::table('transaksi')->where('id', $id)->first();
     
-        // Variabel untuk menyimpan nama file baru, tapi tetap mempertahankan yang lama
-        
+        // Jika data tidak ditemukan
+        if (!$transaksi) {
+            return redirect()->route('transaksi')->with('error', 'Data tidak ditemukan.');
+        }
+    
+        // Simpan nama file lama atau baru
         $jdwlFile = $transaksi->bukti_bayar;
     
         if ($request->hasFile('bukti_bayar')) {
+            // Hapus file lama jika ada
             if ($jdwlFile && file_exists(public_path('transaksi/assets/bukti_bayar/' . $jdwlFile))) {
                 unlink(public_path('transaksi/assets/bukti_bayar/' . $jdwlFile));
             }
+    
+            // Simpan file baru
             $jdwlFile = 'jadwal_' . time() . '.' . $request->bukti_bayar->extension();
             $request->bukti_bayar->move(public_path('transaksi/assets/bukti_bayar'), $jdwlFile);
         }
-
-        // Update data ke tabel 'transaksi' tanpa mengubah file
+    
+        // Update data ke tabel 'transaksi'
         DB::table('transaksi')->where('id', $id)->update([
-            // 'status' => 'verifikasi',
+            'status' => $request->status,
+            'metode_pembayaran' => $request->metode_pembayaran,
             'bukti_bayar' => $jdwlFile,
+            'blok' => $request->blok,
             'updated_at' => now(),
         ]);
     
-        return redirect()->route('transaksi')
-            ->with('success', 'Data Berhasil Diperbarui');
+        return redirect()->route('transaksi')->with('success', 'Data Berhasil Diperbarui.');
     }
+    
     
 
 }
