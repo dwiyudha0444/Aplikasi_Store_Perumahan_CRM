@@ -22,6 +22,22 @@ class TransaksiController extends Controller
         if ($transaksi) {
             return response()->json($transaksi);
         }
+
+        if ($transaksi) {
+            // Ambil data Bangunan terkait dari relasi
+            $bangunan = $transaksi->user;
+
+            return response()->json([
+                'success' => true,
+                'data' => $bangunan,
+            ]);
+        }
+
+        return response()->json([
+            'success' => false,
+            'message' => 'Data tidak ditemukan.',
+        ]);
+
         return response()->json(['message' => 'Transaksi tidak ditemukan'], 404);
     }
 
@@ -46,7 +62,7 @@ class TransaksiController extends Controller
 
             if ($promosi) {
                 $harga = $request->harga;
-                $potongan = 99;
+                $potongan = $promosi->potongan;
                 $hargaakhir = $harga - $potongan;
             } else {
                 // Jika kode promosi tidak valid atau sudah kadaluwarsa

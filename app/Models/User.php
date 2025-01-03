@@ -48,4 +48,6 @@ class User extends Authenticatable
         return $this->hasMany(Booking::class, 'id_users', 'id');
     }
 
+    
+
 }

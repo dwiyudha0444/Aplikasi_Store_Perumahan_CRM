@@ -21,26 +21,29 @@
 
 <body class="nk-body">
 
- <script>
-    $(document).ready(function() {
-        // Event listener untuk tombol "Bayar Sekarang"
-        $('.btn-bayar').on('click', function() {
-            var transaksiId = $(this).data('id'); // Ambil ID dari data-id
-            $('#modalContent').html('<p>Loading...</p>'); // Reset modal content
-            $('#bayarModal').modal('show'); // Tampilkan modal
+    <script>
+        $(document).ready(function() {
+            // Event listener untuk tombol "Bayar Sekarang"
+            $('.btn-bayar').on('click', function() {
+                var transaksiId = $(this).data('id'); // Ambil ID dari data-id
+                $('#modalContent').html('<p>Loading...</p>'); // Reset modal content
+                $('#bayarModal').modal('show'); // Tampilkan modal
 
-            // AJAX untuk mengambil data transaksi
-            $.ajax({
-                url: '/transaksi/detail/' + transaksiId, // Ganti dengan URL endpoint yang sesuai
-                method: 'GET',
-                success: function(response) {
-                    // Tampilkan data ke modal sebagai form input
-                    $('#modalContent').html(`
+                // AJAX untuk mengambil data transaksi
+                $.ajax({
+                    url: '/transaksi/detail/' +
+                        transaksiId, // Ganti dengan URL endpoint yang sesuai
+                    method: 'GET',
+                    success: function(response) {
+                        // Tampilkan data ke modal sebagai form input
+                        $('#modalContent').html(`
                         <form id="paymentForm">
-                            <div class="form-group">
-                                <label for="id_users">Nama Pelanggan</label>
-                                <input type="text" class="form-control" id="id_users" name="id_users" value="${response.id_users}" readonly>
-                            </div>
+                        
+                                <input type="hidden" class="form-control" id="id_users" name="id_users" value="${response.id_users}" readonly>
+                                
+                                <input type="hidden" class="form-control" id="id_bangunan" name="id_bangunan" value="${response.id_bangunan}" readonly>
+                    
+
                             <div class="form-group">
                                 <label for="harga">Kode Promosi (Opsional)</label>
                                 <input type="text" class="form-control" id="promosi" name="promosi" placeholder="Masukkan Kode Promosi">
@@ -50,36 +53,47 @@
                                 <label for="harga">Masukkan Jumlah Bayar</label>
                                 <input type="number" class="form-control" id="harga" name="harga" value=10000000 placeholder="Masukkan jumlah bayar">
                             </div>
+
+                            <div class="form-group">
+                                <label for="harga">Tanggal Bayar</label>
+                                <input type="date" class="form-control" id="tanggal_bayar" name="tanggal_bayar" value="{{ date('Y-m-d') }}">
+                            </div>
+
+
                         </form>
                     `);
-                },
-                error: function() {
-                    $('#modalContent').html('<p>Terjadi kesalahan saat mengambil data. Silakan coba lagi.</p>');
-                }
+                    },
+                    error: function() {
+                        $('#modalContent').html(
+                            '<p>Terjadi kesalahan saat mengambil data. Silakan coba lagi.</p>'
+                        );
+                    }
+                });
             });
-        });
 
-        // Event listener untuk tombol "Bayar" dalam modal
-        $('#confirmPayment').on('click', function() {
-            // Ambil data dari form
-            var formData = $('#paymentForm').serialize();
-            
-            // Lakukan AJAX POST untuk melakukan pembayaran
-            $.ajax({
-                url: '/transaksi/bayar', // Ganti dengan URL endpoint yang sesuai untuk pembayaran
-                method: 'POST',
-                data: formData,
-                success: function(response) {
-                    alert('Pembayaran berhasil dilakukan!');
-                    $('#bayarModal').modal('hide'); // Tutup modal
-                },
-                error: function() {
-                    alert('Terjadi kesalahan saat melakukan pembayaran. Silakan coba lagi.');
-                }
+            // Event listener untuk tombol "Bayar" dalam modal
+            $('#confirmPayment').on('click', function() {
+                // Ambil data dari form
+                var formData = $('#paymentForm').serialize();
+
+                // Lakukan AJAX POST untuk melakukan pembayaran
+                $.ajax({
+                    url: '/transaksi/bayar', // Ganti dengan URL endpoint yang sesuai untuk pembayaran
+                    method: 'POST',
+                    data: formData,
+                    success: function(response) {
+                        alert('Pembayaran berhasil dilakukan!');
+                        $('#bayarModal').modal('hide'); // Tutup modal
+                    },
+                    error: function() {
+                        alert(
+                            'Terjadi kesalahan saat melakukan pembayaran. Silakan coba lagi.'
+                        );
+                    }
+                });
             });
         });
-    });
-</script>
+    </script>
 
 
 
@@ -140,6 +154,17 @@
                 <div class="container">
                     <h2 class="section-title">Data</h2>
                     <div class="table-responsive">
+                        @if (session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+
+                        @if (session('error'))
+                            <div class="alert alert-danger">
+                                {{ session('error') }}
+                            </div>
+                        @endif
                         <table class="table table-striped table-bordered">
                             <thead>
                                 <tr>
@@ -157,8 +182,8 @@
                                         <td>1</td>
                                         <td>{{ $use->user->name }}</td>
                                         <td>{{ $use->bangunan->nama }}</td>
-                                        <td>{{ $use->bangunan->harga }}</td>
-                                        <td>10000000</td>
+                                        <td>Rp. {{ number_format($use->bangunan->harga, 0, ',', '.') }}</td>
+                                        <td>Rp. 10.000.000</td>
                                         <td class="text-center align-middle">
                                             <button class="btn btn-primary btn-bayar" data-id="{{ $use->id }}">
                                                 Bayar Sekarang
@@ -202,8 +227,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="blok">Blok</label>
-                                    <input type="text" class="form-control" id="blok" name="blok"
-                                        >
+                                    <input type="text" class="form-control" id="blok" name="blok">
                                 </div>
                             </div>
                         </div>
