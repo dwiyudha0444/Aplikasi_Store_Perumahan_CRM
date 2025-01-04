@@ -7,7 +7,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>Home - SpaceX Template</title>
+	<title>Siteplan</title>
 
 	<!-- Main Styles -->
 	<link rel="stylesheet" href="{{ asset('assets/styles/style.min.css')}}">

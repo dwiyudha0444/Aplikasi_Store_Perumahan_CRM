@@ -45,6 +45,7 @@ Route::get('/promosi_marketing', [PromosiMarketingController::class, 'index'])->
 Route::get('/promosi_marketing/form', [PromosiMarketingController::class, 'create'])->name('promosi_marketing_form');
 
 Route::get('/denah_edit/{id}', [DenahPerumController::class, 'edit'])->name('denah_edit');
+Route::get('/denah_show/{id}', [DenahPerumController::class, 'show'])->name('denah_show');
 Route::put('/denah_edit/{id}', [DenahPerumController::class, 'update'])->name('denah_update');
 
 //denah perum

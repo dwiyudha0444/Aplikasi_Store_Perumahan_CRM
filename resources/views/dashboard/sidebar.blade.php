@@ -25,19 +25,12 @@
                         </li>
                         <li>
                             <a class="waves-effect parent-item js__control" href="#">
-                                <i class="menu-icon ti-bar-chart"></i><span>Charts</span>
+                                <i class="menu-icon ti-bar-chart"></i><span>Transaksi</span>
                                 <span class="menu-arrow fa fa-angle-down"></span>
                             </a>
                             <ul class="sub-menu js__content">
-                                <li><a href="chart-3d.html">3D Charts</a></li>
+                                <li><a href="chart-3d.html">Transaksi</a></li>
                                 <li><a href="chart-chartist.html">Chartist Charts</a></li>
-                                <li><a href="chart-chartjs.html">Chartjs Chart</a></li>
-                                <li><a href="chart-dynamic.html">Dynamic Chart</a></li>
-                                <li><a href="chart-flot.html">Flot Chart</a></li>
-                                <li><a href="chart-knob.html">Knob Chart</a></li>
-                                <li><a href="chart-morris.html">Morris Chart</a></li>
-                                <li><a href="chart-sparkline.html">Sparkline Chart</a></li>
-                                <li><a href="chart-other.html">Other Chart</a></li>
                             </ul>
                         </li>
                         <li>

@@ -21,6 +21,12 @@ class DenahPerumController extends Controller
         return view('dashboard.admin.denah_perum.form_edit', compact('bangunan'));
     }
 
+    public function show($id)
+    {
+        $bangunan = DenahPerum::findOrFail($id);
+        return view('dashboard.admin.denah_perum.show', compact('bangunan'));
+    }
+
     public function update(Request $request, $id)
     {
         // Validasi input
