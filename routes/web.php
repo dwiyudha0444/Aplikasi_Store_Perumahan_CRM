@@ -3,6 +3,7 @@
 use App\Http\Controllers\admin\DashboardAdminController;
 use App\Http\Controllers\admin\DashboardMarketingController;
 use App\Http\Controllers\admin\DenahPerumController;
+use App\Http\Controllers\admin\TransaksiAdminController;
 use App\Http\Controllers\auth\LoginController;
 use App\Http\Controllers\auth\RegisterController;
 use Illuminate\Support\Facades\Route;
@@ -47,6 +48,12 @@ Route::get('/promosi_marketing/form', [PromosiMarketingController::class, 'creat
 Route::get('/denah_edit/{id}', [DenahPerumController::class, 'edit'])->name('denah_edit');
 Route::get('/denah_show/{id}', [DenahPerumController::class, 'show'])->name('denah_show');
 Route::put('/denah_edit/{id}', [DenahPerumController::class, 'update'])->name('denah_update');
+
+Route::get('/transaksi/admin', [TransaksiAdminController::class, 'index'])->name('transaksi_admin');
+Route::get('/transaksi/show/{id}', [TransaksiAdminController::class, 'show'])->name('transaksi_admin_show');
+Route::get('/transaksi/{id}/show-image', [TransaksiAdminController::class, 'showImage'])->name('transaksi.show_image');
+Route::get('/transaksi/edit/{id}', [TransaksiAdminController::class, 'edit'])->name('transaksi_admin_edit');
+
 
 //denah perum
 Route::get('/denah_perum', [DenahPerumController::class, 'index'])->name('denah_perum');

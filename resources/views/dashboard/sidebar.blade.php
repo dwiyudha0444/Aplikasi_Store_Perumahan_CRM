@@ -29,7 +29,7 @@
                                 <span class="menu-arrow fa fa-angle-down"></span>
                             </a>
                             <ul class="sub-menu js__content">
-                                <li><a href="chart-3d.html">Transaksi</a></li>
+                                <li><a href="{{ route('transaksi_admin')}}">Transaksi</a></li>
                                 <li><a href="chart-chartist.html">Chartist Charts</a></li>
                             </ul>
                         </li>
