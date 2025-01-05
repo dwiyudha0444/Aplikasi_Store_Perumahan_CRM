@@ -112,7 +112,7 @@
                                             <label for="blok">Jalan</label>
                                             <input type="text" id="jalan" name="jalan" class="form-control"
                                                 placeholder="Masukkan Jalan"
-                                                value="{{ old('jalan', $bangunan->blok ?? '') }}">
+                                                value="{{ old('jalan', $bangunan->jalan ?? '') }}">
                                         </div>
                                         <div class="form-group text-center">
                                             <button type="submit" class="btn btn-primary">Simpan</button>

@@ -53,6 +53,7 @@ Route::get('/transaksi/admin', [TransaksiAdminController::class, 'index'])->name
 Route::get('/transaksi/show/{id}', [TransaksiAdminController::class, 'show'])->name('transaksi_admin_show');
 Route::get('/transaksi/{id}/show-image', [TransaksiAdminController::class, 'showImage'])->name('transaksi.show_image');
 Route::get('/transaksi/edit/{id}', [TransaksiAdminController::class, 'edit'])->name('transaksi_admin_edit');
+Route::put('/transaksi/edit/{id}', [TransaksiAdminController::class, 'update'])->name('transaksi_admin_update');
 
 
 //denah perum

@@ -69,13 +69,13 @@
                         <div class="form-group">
                             <label for="status">Status</label>
                             <select id="status" name="status" class="form-control">
-                                <option value="available"
-                                    {{ old('status', $bangunan->status ?? '') == 'available' ? 'selected' : '' }}>Available
+                                <option value="booking"
+                                    {{ old('status', $bangunan->status ?? '') == 'booking' ? 'selected' : '' }}>Booking
                                 </option>
                                 <option value="sold"
                                     {{ old('status', $bangunan->status ?? '') == 'sold' ? 'selected' : '' }}>Sold</option>
-                                <option value="reserved"
-                                    {{ old('status', $bangunan->status ?? '') == 'reserved' ? 'selected' : '' }}>Reserved
+                                <option value="open"
+                                    {{ old('status', $bangunan->status ?? '') == 'open' ? 'selected' : '' }}>Open
                                 </option>
                             </select>
                         </div>

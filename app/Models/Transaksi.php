@@ -32,4 +32,9 @@ class Transaksi extends Model
     {
         return $this->belongsTo(DenahPerum::class, 'id_bangunan', 'id');
     }
+
+    public function angsuran()
+    {
+        return $this->hasMany(Angsuran::class, 'id_pembayaran', 'id');
+    }
 }

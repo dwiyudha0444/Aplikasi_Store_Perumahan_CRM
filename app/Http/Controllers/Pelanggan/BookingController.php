@@ -28,28 +28,43 @@ class BookingController extends Controller
 
     public function store(Request $request)
     {
+        // Validasi input
         $request->validate([
-
             'id_users' => 'required|string|max:255',
             'id_bangunan' => 'required|string|max:255',
             'blok' => 'nullable|string|max:255',
             'jalan' => 'nullable|string|max:255',
-
         ]);
-
-
-        // Insert data ke tabel 'berkas'
-        DB::table('pemilihan_siteplan')->insert([
-            'id_users' => $request->id_users,
-            'id_bangunan' => $request->id_bangunan,
-            'blok' => $request->blok,
-            'jalan' => $request->jalan,
-            'created_at' => now(),
-        ]);
-
-        return redirect()->route('booking')
-            ->with('success', 'Data Berhasil Disimpan');
+    
+        DB::beginTransaction(); // Mulai transaksi database untuk memastikan konsistensi
+    
+        try {
+            // Insert data ke tabel 'pemilihan_siteplan'
+            DB::table('pemilihan_siteplan')->insert([
+                'id_users' => $request->id_users,
+                'id_bangunan' => $request->id_bangunan,
+                'blok' => $request->blok,
+                'jalan' => $request->jalan,
+                'created_at' => now(),
+            ]);
+    
+            // Update status di tabel 'bangunan'
+            DB::table('bangunan')
+                ->where('id', $request->id_bangunan)
+                ->update(['status' => 'booking', 'updated_at' => now()]);
+    
+            DB::commit(); // Commit transaksi jika semuanya berhasil
+    
+            // Redirect dengan pesan sukses
+            return redirect()->route('booking')->with('success', 'Data berhasil disimpan dan status bangunan diperbarui.');
+        } catch (\Exception $e) {
+            DB::rollBack(); // Batalkan semua perubahan jika terjadi kesalahan
+    
+            // Redirect dengan pesan error
+            return redirect()->route('booking')->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
+        }
     }
+    
 
 
 }
