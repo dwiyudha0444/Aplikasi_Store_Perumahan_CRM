@@ -72,6 +72,7 @@ class TransaksiController extends Controller
                 $harga = $request->harga;
                 $potongan = $promosi->potongan;
                 $hargaakhir = $harga - $potongan;
+                $promosi->increment('digunakan');
             } else {
                 // Jika kode promosi tidak valid atau sudah kadaluwarsa
                 return back()->with('error', 'Kode promosi tidak valid atau sudah kadaluwarsa.');

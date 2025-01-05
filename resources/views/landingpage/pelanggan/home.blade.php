@@ -1,6 +1,6 @@
 @extends('landingpage.pelanggan.index')
 @section('content2')
-    <section class="section section-l bg-white section-about" id="about">
+    {{-- <section class="section section-l bg-white section-about" id="about">
         <div class="container">
             <div class="section-content">
                 <div class="row g-gs justify-content-between">
@@ -38,13 +38,13 @@
                 </div><!-- .row -->
             </div><!-- .section-content -->
         </div><!-- .container -->
-    </section><!-- .section -->
+    </section><!-- .section --> --}}
 
     <section class="section section-l bg-light section-spread" id="spread">
         <div class="container">
             <div class="section-head text-center wide-md">
-                <h5 class="subtitle">How coronavirus is spread</h5>
-                <h2 class="title">Transmission of <br class="d-sm-none"> COVID-19</h2>
+                <h5 class="subtitle"></h5>
+                <h2 class="title">Daftar<br class="d-sm-none"> Bangunan</h2>
                 <p>Because it's a new illness, we do not know exactly how coronavirus spreads from person to
                     person. Similar viruses are spread in cough droplets.</p>
             </div><!-- .section-head -->
@@ -54,10 +54,11 @@
                         <div class="col-sm-10 col-md-8 col-lg-4">
                             <div class="box">
                                 <div class="box-gfx">
-                                    <img src="{{ asset('landingpage/images/gfx/spread-a.png') }}" alt="">
+                                   <img src="{{ asset('bangunan/assets/foto/' . $use->foto) }}"
+                                    alt="Foto">
                                 </div>
                                 <div class="box-content">
-                                    <h4 class="title"> {{ $use->nama }}
+                                    <h4 class="title"> {{ $use->id }}
                                     </h4>
                                     <p> {{ $use->deskripsi }}</p>
                                 </div>
@@ -152,7 +153,7 @@
 
 
 
-    <section class="section section-l bg-light section-steps pb-4" id="steps">
+    {{-- <section class="section section-l bg-light section-steps pb-4" id="steps">
         <div class="container">
             <div class="section-content section-content-boxed">
                 <div class="row g-gs justify-content-center align-items-center">
@@ -188,5 +189,5 @@
                 </div><!-- .row -->
             </div><!-- .section-content -->
         </div><!-- .container -->
-    </section><!-- .section -->
+    </section><!-- .section --> --}}
 @endsection

@@ -6,7 +6,7 @@
                     <div class="nk-footer-bottom">
                         <div class="row align-items-center">
                             <div class="col-md-6">
-                                <p class="nk-copyright">&copy; 2020 KOVID-19. Template Made by <a
+                                <p class="nk-copyright">&copy; Template Made by <a
                                         href="https://softnio.com">Softnio</a>.</p>
                             </div><!-- .col -->
                             <div class="col-md-6">

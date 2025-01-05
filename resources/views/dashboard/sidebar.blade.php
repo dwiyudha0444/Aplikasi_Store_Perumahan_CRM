@@ -47,7 +47,7 @@
                     <h5 class="title">Marketing</h5>
                     <!-- /.title -->
                     <ul class="menu js__accordion">
-                        <li>
+                        {{-- <li>
                             <a class="waves-effect parent-item js__control" href="#"><i
                                     class="menu-icon ti-flag"></i><span>Icons</span><span
                                     class="menu-arrow fa fa-angle-down"></span></a>
@@ -59,7 +59,7 @@
                                 <li><a href="icons-themify-icons.html">Themify Icons</a></li>
                             </ul>
                             <!-- /.sub-menu js__content -->
-                        </li>
+                        </li> --}}
                         <li>
                             <a class="waves-effect parent-item js__control" href="#"><i
                                     class="menu-icon ti-desktop"></i><span>Promosi</span><span

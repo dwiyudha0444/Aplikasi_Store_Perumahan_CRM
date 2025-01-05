@@ -11,5 +11,11 @@ class Promosi extends Model
 
     protected $fillable = [
         'jenis_promosi',
+        'keterangan',
+        'batas_waktu',
+        'kode',
+        'potongan',
+        'status',
     ];
+    
 }
