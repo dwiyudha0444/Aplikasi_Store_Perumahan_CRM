@@ -30,14 +30,18 @@
                             </a>
                             <ul class="sub-menu js__content">
                                 <li><a href="{{ route('transaksi_admin')}}">Transaksi</a></li>
-                                <li><a href="chart-chartist.html">Chartist Charts</a></li>
+                               
                             </ul>
                         </li>
                         <li>
-                            <a class="waves-effect" href="widgets.html">
-                                <i class="menu-icon ti-layers-alt"></i><span>Widgets</span>
-                                <span class="notice notice-yellow">6</span>
+                            <a class="waves-effect parent-item js__control" href="#">
+                                <i class="menu-icon ti-bar-chart"></i><span>Angsuran</span>
+                                <span class="menu-arrow fa fa-angle-down"></span>
                             </a>
+                            <ul class="sub-menu js__content">
+                                <li><a href="{{ route('angsuran_admin')}}">Angsuran</a></li>
+                               
+                            </ul>
                         </li>
                     </ul>
                 @endif

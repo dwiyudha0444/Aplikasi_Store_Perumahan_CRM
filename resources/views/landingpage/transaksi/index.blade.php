@@ -20,7 +20,12 @@
 </head>
 
 <body class="nk-body">
-
+    <style>
+        .nk-page-head {
+            background-image: none !important;
+            background-color: #f5f5f5;
+        }
+    </style>
     <div class="nk-wrap">
         <header class="nk-header bg-light has-overlay" id="home">
             <div class="overlay shape shape-a-sm"></div><!-- Overlay Shape -->
@@ -28,12 +33,7 @@
                 <div class="container">
                     <div class="nk-navbar-wrap">
                         <div class="nk-navbar-logo logo">
-                            <a href="./" class="logo-link">
-                                <img class="logo-dark" src="{{ asset('landingpage/images/logo-dark.png') }}"
-                                    srcset="{{ asset('landingpage/images/logo-dark2x.png 2x') }}" alt="logo">
-                                <img class="logo-light" src="{{ asset('landingpage/images/logo-white.png') }}"
-                                    srcset="{{ asset('landingpage/images/logo-white2x.png 2x') }}" alt="logo">
-                            </a>
+                            <h1 class="logo-text">Siteplan</h1>
                         </div><!-- .nk-navbar-logo -->
                         <div class="nk-navbar-toggle d-lg-none">
                             <a href="#" class="toggle" data-menu-toggle="navbar-menu"><em
@@ -51,8 +51,24 @@
 
                             </ul>
                             <ul class="nk-menu-btns">
-                                <li class="nk-menu-item"><a href=""
-                                        class="btn btn-sm scrollto nav-link">{{ Auth::user()->name }}</a></li>
+                                <li class="nk-menu-item dropdown">
+                                    @if (Auth::check())
+                                        <a href="#" class="btn btn-sm scrollto nav-link dropdown-toggle"
+                                            id="userDropdown" data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false">
+                                            {{ Auth::user()->name }}
+                                        </a>
+                                    @else
+                                        <a href="{{ route('login') }}" class="btn btn-sm scrollto nav-link">Login</a>
+                                    @endif
+
+                                    <div class="dropdown-menu" aria-labelledby="userDropdown">
+                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                            Logout
+                                        </a>
+                                    </div>
+                                </li>
                             </ul>
                         </nav><!-- .nk-navbar-menu -->
                     </div><!-- .nk-navbar-wrap -->
@@ -62,8 +78,8 @@
                 <div class="container">
                     <div class="nk-page-head-wrap">
                         <div class="nk-page-head-text">
-                            <h5 class="subtitle">Prevention</h5>
-                            <h2 class="title">Daftar List Booking</h2>
+                            <h5 class="subtitle">Transaksi</h5>
+                            <h2 class="title">Daftar List Transaksi DP</h2>
                         </div><!-- .nk-banner-block -->
                         <div class="nk-page-head-image">
                             <img src="images/gfx/page-head.png" alt="">
@@ -99,6 +115,7 @@
                                     <th>Harga Bangunan</th>
                                     <th>Harga DP</th>
                                     <th>Status</th>
+                                    <th>Kode Promosi</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -112,15 +129,23 @@
                                         <td>Rp. {{ number_format($use->bangunan->harga, 0, ',', '.') }}</td>
                                         <td>Rp. 10.000.000</td>
                                         <td>{{ $use->status }}</td>
+                                        <td>{{ $use->promosi }}</td>
                                         <td class="text-center align-middle">
-                                            <a href="{{ route('get_transaksi_update', $use->id) }}"
-                                                class="btn btn-primary btn-bayar">
-                                                Bayar Sekarang
-                                            </a>
+                                            @if ($use->status === 'verifikasi')
+                                                <a href="{{ route('get_transaksi_update', $use->id) }}"
+                                                    class="btn btn-success btn-bayar">
+                                                    Menunggu Admin
+                                                </a>
+                                            @else
+                                                <a href="{{ route('get_transaksi_update', $use->id) }}"
+                                                    class="btn btn-primary btn-bayar">
+                                                    Bayar Sekarang
+                                                </a>
+                                            @endif
                                         </td>
-
                                     </tr>
                                 @endforeach
+
                             </tbody>
                         </table>
                     </div>
@@ -135,7 +160,7 @@
                     <div class="nk-footer-bottom">
                         <div class="row align-items-center">
                             <div class="col-md-6">
-                                <p class="nk-copyright">&copy; 2020 KOVID-19. Template Made by <a
+                                <p class="nk-copyright">&copy;Template Made by <a
                                         href="https://softnio.com">Softnio</a>.</p>
                             </div><!-- .col -->
                             <div class="col-md-6">

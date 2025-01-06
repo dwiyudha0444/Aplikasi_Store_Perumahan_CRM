@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\AngsuranAdminController;
 use App\Http\Controllers\admin\DashboardAdminController;
 use App\Http\Controllers\admin\DashboardMarketingController;
 use App\Http\Controllers\admin\DenahPerumController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\auth\RegisterController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\landingpageController;
 use App\Http\Controllers\Marketing\PromosiMarketingController;
+use App\Http\Controllers\Pelanggan\AngsuranPelangganController;
 use App\Http\Controllers\Pelanggan\BookingController;
 use App\Http\Controllers\Pelanggan\LandingpagePelangganController;
 use App\Http\Controllers\Pelanggan\TransaksiController;
@@ -76,3 +78,9 @@ Route::post('/transaksi/bayar', [TransaksiController::class, 'store']);
 
 Route::get('/transaksi_update/{id}', [TransaksiController::class, 'edit'])->name('get_transaksi_update');
 Route::put('/transaksi_update_/{id}', [TransaksiController::class, 'update'])->name('transaksi_update');
+
+//angsuran
+
+Route::get('/angsuran', [AngsuranPelangganController::class, 'index'])->name('angsuran');
+
+Route::get('/angsuran/admin', [AngsuranAdminController::class, 'index'])->name('angsuran_admin');

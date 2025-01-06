@@ -95,7 +95,12 @@
         });
     </script>
 
-
+<style>
+.nk-page-head {
+    background-image: none !important;
+    background-color: #f5f5f5;
+}
+</style>
 
     <div class="nk-wrap">
         <header class="nk-header bg-light has-overlay" id="home">
@@ -104,12 +109,10 @@
                 <div class="container">
                     <div class="nk-navbar-wrap">
                         <div class="nk-navbar-logo logo">
-                            <a href="./" class="logo-link">
-                                <img class="logo-dark" src="{{ asset('landingpage/images/logo-dark.png') }}"
-                                    srcset="{{ asset('landingpage/images/logo-dark2x.png 2x') }}" alt="logo">
-                                <img class="logo-light" src="{{ asset('landingpage/images/logo-white.png') }}"
-                                    srcset="{{ asset('landingpage/images/logo-white2x.png 2x') }}" alt="logo">
-                            </a>
+
+                            <h1 class="logo-text">Siteplan</h1>
+
+
                         </div><!-- .nk-navbar-logo -->
                         <div class="nk-navbar-toggle d-lg-none">
                             <a href="#" class="toggle" data-menu-toggle="navbar-menu"><em
@@ -127,8 +130,24 @@
 
                             </ul>
                             <ul class="nk-menu-btns">
-                                <li class="nk-menu-item"><a href=""
-                                        class="btn btn-sm scrollto nav-link">{{ Auth::user()->name }}</a></li>
+                                <li class="nk-menu-item dropdown">
+                                    @if (Auth::check())
+                                        <a href="#" class="btn btn-sm scrollto nav-link dropdown-toggle"
+                                            id="userDropdown" data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false">
+                                            {{ Auth::user()->name }}
+                                        </a>
+                                    @else
+                                        <a href="{{ route('login') }}" class="btn btn-sm scrollto nav-link">Login</a>
+                                    @endif
+
+                                    <div class="dropdown-menu" aria-labelledby="userDropdown">
+                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                            Logout
+                                        </a>
+                                    </div>
+                                </li>
                             </ul>
                         </nav><!-- .nk-navbar-menu -->
                     </div><!-- .nk-navbar-wrap -->
@@ -138,7 +157,7 @@
                 <div class="container">
                     <div class="nk-page-head-wrap">
                         <div class="nk-page-head-text">
-                            <h5 class="subtitle">Prevention</h5>
+                            <h5 class="subtitle">Booking</h5>
                             <h2 class="title">Daftar List Booking</h2>
                         </div><!-- .nk-banner-block -->
                         <div class="nk-page-head-image">
@@ -173,7 +192,7 @@
                                     <th>Nama Bangunan</th>
                                     <th>Blok</th>
                                     <th>Harga DP</th>
-                                    <th></th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -182,7 +201,7 @@
                                         <td>1</td>
                                         <td>{{ $use->user->name }}</td>
                                         <td>{{ $use->bangunan->nama }}</td>
-                                        <td>Rp. {{ number_format($use->bangunan->harga, 0, ',', '.') }}</td>
+                                        <td>{{ $use->blok }}</td>
                                         <td>Rp. 10.000.000</td>
                                         <td class="text-center align-middle">
                                             <button class="btn btn-primary btn-bayar" data-id="{{ $use->id }}">
@@ -243,7 +262,6 @@
 
 
 
-
         <footer class="nk-footer bg-dark tc-light has-overlay">
             <div class="overlay shape shape-c"></div><!-- Overlay Shape -->
             <section class="section section-footer section-m tc-light">
@@ -251,7 +269,7 @@
                     <div class="nk-footer-bottom">
                         <div class="row align-items-center">
                             <div class="col-md-6">
-                                <p class="nk-copyright">&copy; 2020 KOVID-19. Template Made by <a
+                                <p class="nk-copyright">&copy;  Template Made by <a
                                         href="https://softnio.com">Softnio</a>.</p>
                             </div><!-- .col -->
                             <div class="col-md-6">

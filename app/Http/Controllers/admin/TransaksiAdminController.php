@@ -62,7 +62,8 @@ class TransaksiAdminController extends Controller
             if ($request->status === 'terverifikasi') {
                 DB::table('angsuran')->insert([
                     'id_users' => $transaksi->id_users,  
-                    'jumlah_angsuran' => $transaksi->jumlah_angsuran,  
+                    'jumlah_angsuran' => $transaksi->harga,  
+                    'sisa_angsuran' => $transaksi->harga,  
                     'created_at' => now(),               
                     'updated_at' => now(),               
                 ]);

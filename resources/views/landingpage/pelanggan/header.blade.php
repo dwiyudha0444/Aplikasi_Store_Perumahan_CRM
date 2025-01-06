@@ -4,12 +4,7 @@
         <div class="container">
             <div class="nk-navbar-wrap">
                 <div class="nk-navbar-logo logo">
-                    <a href="./" class="logo-link">
-                        <img class="logo-dark" src="{{ asset('landingpage/images/logo-dark.png') }}"
-                            srcset="{{ asset('landingpage/images/logo-dark2x.png 2x') }}" alt="logo">
-                        <img class="logo-light" src="{{ asset('landingpage/images/logo-white.png') }}"
-                            srcset="{{ asset('landingpage/images/logo-white2x.png 2x') }}" alt="logo">
-                    </a>
+                     <h1 class="logo-text">Siteplan</h1>
                 </div><!-- .nk-navbar-logo -->
                 <div class="nk-navbar-toggle d-lg-none">
                     <a href="#" class="toggle" data-menu-toggle="navbar-menu"><em
@@ -18,18 +13,39 @@
                 <nav class="nk-navbar-menu" id="navbar-menu">
                     <ul class="nk-menu">
                         <li class="nk-menu-item"><a class="scrollto nav-link nk-menu-link" href="#home">Home</a></li>
-                        <li class="nk-menu-item"><a class="scrollto nav-link nk-menu-link"
-                                href="{{ route('transaksi') }}">Transaksi</a></li>
-                        <li class="nk-menu-item"><a class="scrollto nav-link nk-menu-link"
-                                href="{{ route('booking') }}">Booking</a></li>
 
+                        @auth
+                        <li class="nk-menu-item"><a class="scrollto nav-link nk-menu-link"
+                                    href="{{ route('angsuran') }}">Angsuran</a></li>
+                            <li class="nk-menu-item"><a class="scrollto nav-link nk-menu-link"
+                                    href="{{ route('transaksi') }}">Transaksi</a></li>
+                            <li class="nk-menu-item"><a class="scrollto nav-link nk-menu-link"
+                                    href="{{ route('booking') }}">Booking</a></li>
+                        @endauth
+
+                        @guest
+                            <li class="nk-menu-item">
+                                <a class="scrollto nav-link nk-menu-link" href="#"
+                                    onclick="alert('Silakan login terlebih dahulu untuk mengakses Transaksi!'); return false;">Transaksi</a>
+                            </li>
+                            <li class="nk-menu-item">
+                                <a class="scrollto nav-link nk-menu-link" href="#"
+                                    onclick="alert('Silakan login terlebih dahulu untuk mengakses Booking!'); return false;">Booking</a>
+                            </li>
+                        @endguest
                     </ul>
+
                     <ul class="nk-menu-btns">
                         <li class="nk-menu-item dropdown">
-                            <a href="#" class="btn btn-sm scrollto nav-link dropdown-toggle" id="userDropdown"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                {{ Auth::user()->name }}
-                            </a>
+                            @if (Auth::check())
+                                <a href="#" class="btn btn-sm scrollto nav-link dropdown-toggle" id="userDropdown"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{ Auth::user()->name }}
+                                </a>
+                            @else
+                                <a href="{{ route('login') }}" class="btn btn-sm scrollto nav-link">Login</a>
+                            @endif
+
                             <div class="dropdown-menu" aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -66,40 +82,11 @@
                                     <span class="sub">New</span>
                                 </span>
                             </h1>
-                            <p>The Coronavirus (COVID-19) was first reported in Wuhan, Hubei,
+                            <p> was first reported in Wuhan, Hubei,
                                 China in December 2019, the outbreak was later recognized as a
                                 pandemic by the World Health Organization (WHO) on 11 March 2020.</p>
 
-                            {{-- <ul class="nk-banner-btns">
-                                        <li><a href="#protect" class="btn scrollto"><span>How to Protect</span><em
-                                                    class="icon ni ni-shield-half"></em></a></li>
-                                        <li><a href="#about" class="btn btn-transparent scrollto"><span>About
-                                                    COVID-19</span><em class="icon ni ni-arrow-right"></em></a></li>
-                                    </ul>
-                                    <div class="status" data-covid="world">
-                                        <div class="row g-gs">
-                                            <div class="col-sm-4 col-6">
-                                                <div class="status-item">
-                                                    <h6 class="title">Worldwide Cases</h6>
-                                                    <div class="h3 count covid-stats-cases">~</div>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-4 col-6">
-                                                <div class="status-item">
-                                                    <h6 class="title">Deaths</h6>
-                                                    <div class="h3 count covid-stats-death">~</div>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-4 col-6">
-                                                <div class="status-item">
-                                                    <h6 class="title">Recovered</h6>
-                                                    <div class="h3 count covid-stats-recovered">~</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="status-note">* Last updated: <span
-                                                class="covid-update-time">~</span></div>
-                                    </div><!-- .status --> --}}
+                         
                         </div><!-- .content -->
                     </div><!-- .nk-banner-block -->
                 </div><!-- .col -->
@@ -107,3 +94,9 @@
         </div><!-- .container -->
     </div><!-- .nk-banner -->
 </header><!-- .nk-header -->
+<style>
+.nk-banner {
+    background-image: none !important;
+    background-color: #f5f5f5;
+}
+</style>

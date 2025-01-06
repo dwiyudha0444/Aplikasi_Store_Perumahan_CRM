@@ -525,6 +525,7 @@ input ~ .error, textarea ~ .error, select ~ .error {
     padding-left: 10px; }
 
 /** 05. Components */
+
 /** 05.1 Banner */
 .nk-banner {
   padding: 6.5rem 0 2rem;

@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\Pelanggan;
 
 use App\Http\Controllers\Controller;
 use App\Models\Angsuran;
 use Illuminate\Http\Request;
 
-class AngsuranAdminController extends Controller
+class AngsuranPelangganController extends Controller
 {
     public function index()
     {
         $angsuran = Angsuran::orderBy('created_at', 'desc')->get();
-        return view('dashboard.admin.angsuran.index', compact('angsuran'));
+        return view('landingpage.angsuran.index', compact('angsuran'));
     }
 }

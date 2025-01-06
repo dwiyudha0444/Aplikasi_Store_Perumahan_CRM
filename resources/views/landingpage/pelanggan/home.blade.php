@@ -54,8 +54,7 @@
                         <div class="col-sm-10 col-md-8 col-lg-4">
                             <div class="box">
                                 <div class="box-gfx">
-                                   <img src="{{ asset('bangunan/assets/foto/' . $use->foto) }}"
-                                    alt="Foto">
+                                    <img src="{{ asset('bangunan/assets/foto/' . $use->foto) }}" alt="Foto">
                                 </div>
                                 <div class="box-content">
                                     <h4 class="title"> {{ $use->id }}
@@ -68,9 +67,24 @@
 
                 </div><!-- .row -->
                 <ul class="section-actions">
-                    <li><a href="{{ route('denah') }}" class="btn scrollto"><em class="icon ni ni-question"></em>Pilih
-                            Bangunan</span></a></li>
-                </ul><!-- .section-actions -->
+                    @auth
+                        <li>
+                            <a href="{{ route('denah') }}" class="btn scrollto">
+                                <em class="icon ni ni-question"></em>Pilih Bangunan
+                            </a>
+                        </li>
+                    @endauth
+
+                    @guest
+                        <li>
+                            <a href="#" class="btn scrollto"
+                                onclick="alert('Silakan login terlebih dahulu untuk memilih bangunan!'); return false;">
+                                <em class="icon ni ni-question"></em>Pilih Bangunan
+                            </a>
+                        </li>
+                    @endguest
+                </ul>
+
             </div><!-- .section-content -->
         </div><!-- .container -->
     </section><!-- .section -->

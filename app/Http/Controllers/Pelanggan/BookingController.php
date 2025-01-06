@@ -12,10 +12,7 @@ class BookingController extends Controller
 {
     public function index()
     {
-        // Ambil data dari model Booking, urutkan berdasarkan created_at secara descending
         $booking = Booking::orderBy('created_at', 'desc')->get();
-
-        // Kirim data ke view
         return view('landingpage.booking.index', compact('booking'));
     }
 

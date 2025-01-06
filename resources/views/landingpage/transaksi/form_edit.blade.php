@@ -59,7 +59,7 @@
                     <div class="nk-page-head-wrap">
                         <div class="nk-page-head-text">
                             <h5 class="subtitle">Prevention</h5>
-                            <h2 class="title">Daftar List Booking</h2>
+                            <h2 class="title">Daftar List Transaksi</h2>
                         </div><!-- .nk-banner-block -->
                         <div class="nk-page-head-image">
                             <img src="images/gfx/page-head.png" alt="">
@@ -94,11 +94,10 @@
                                         <div class="form-group">
                                             <input type="hidden" id="status" name="status" value="verifikasi">
                                         </div>
-                                        
-                                        
 
                                         <div class="form-group">
-                                            <input type="hidden" id="blok" name="blok" value="{{ $transaksi->bangunan->blok }}">
+                                            <input type="hidden" id="blok" name="blok"
+                                                value="{{ $transaksi->bangunan->blok }}">
                                         </div>
 
                                         <div class="form-group">
@@ -107,12 +106,24 @@
                                                 class="form-control" value="transfer" readonly>
                                         </div>
 
+                                        <div class="form-group">
+                                            <label for="alamat">Alamat</label>
+                                            <textarea id="alamat" name="alamat" class="form-control" rows="3" placeholder="Masukkan alamat">{{ old('alamat', $transaksi->alamat ?? '') }}</textarea>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="nomer">Nomor Telepon</label>
+                                            <input type="text" id="nomer" name="nomer"
+                                                class="form-control" placeholder="Masukkan nomer telepon"
+                                                value="{{ old('nomer', $transaksi->nomer ?? '') }}">
+                                        </div>
 
                                         <div class="form-group text-center">
                                             <button type="submit" class="btn btn-primary">Update</button>
                                             <button type="reset" class="btn btn-secondary">Reset</button>
                                         </div>
                                     </form>
+
 
 
 

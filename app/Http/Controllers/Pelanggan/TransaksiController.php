@@ -21,7 +21,7 @@ class TransaksiController extends Controller
     {
         $transaksi = Transaksi::findOrFail($id);
         return view('landingpage.transaksi.form_edit', compact('transaksi'));
-    }    
+    }
 
     public function detail($id)
     {
@@ -97,6 +97,9 @@ class TransaksiController extends Controller
             'created_at' => now(),
         ]);
 
+        DB::table('pemilihan_siteplan')->where('id_bangunan', $request->id_bangunan)->delete();
+
+
         return redirect()->route('transaksi')
             ->with('success', 'Transaksi berhasil disimpan.');
     }
@@ -109,42 +112,43 @@ class TransaksiController extends Controller
             'status' => 'required',
             'metode_pembayaran' => 'required',
             'blok' => 'required',
+            'alamat' => 'required',
+            'status' => 'required',
         ]);
-    
+
         // Temukan data yang akan diupdate
         $transaksi = DB::table('transaksi')->where('id', $id)->first();
-    
+
         // Jika data tidak ditemukan
         if (!$transaksi) {
             return redirect()->route('transaksi')->with('error', 'Data tidak ditemukan.');
         }
-    
+
         // Simpan nama file lama atau baru
         $jdwlFile = $transaksi->bukti_bayar;
-    
+
         if ($request->hasFile('bukti_bayar')) {
             // Hapus file lama jika ada
             if ($jdwlFile && file_exists(public_path('transaksi/assets/bukti_bayar/' . $jdwlFile))) {
                 unlink(public_path('transaksi/assets/bukti_bayar/' . $jdwlFile));
             }
-    
+
             // Simpan file baru
             $jdwlFile = 'jadwal_' . time() . '.' . $request->bukti_bayar->extension();
             $request->bukti_bayar->move(public_path('transaksi/assets/bukti_bayar'), $jdwlFile);
         }
-    
+
         // Update data ke tabel 'transaksi'
         DB::table('transaksi')->where('id', $id)->update([
             'status' => $request->status,
             'metode_pembayaran' => $request->metode_pembayaran,
             'bukti_bayar' => $jdwlFile,
             'blok' => $request->blok,
+            'alamat' => $request->alamat,
+            'status' => $request->status,
             'updated_at' => now(),
         ]);
-    
+
         return redirect()->route('transaksi')->with('success', 'Data Berhasil Diperbarui.');
     }
-    
-    
-
 }

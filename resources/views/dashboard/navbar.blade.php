@@ -13,11 +13,18 @@
         <div class="ico-item">
             <i class="ti-user"></i>
             <ul class="sub-ico-item">
-                <li><a href="{{ route('logout') }}">Log Out</a></li>
+                <li>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                    <a href="#"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Log Out</a>
+                </li>
             </ul>
             <!-- /.sub-ico-item -->
         </div>
     </div>
+
     <!-- /.pull-right -->
 </div>
 <!-- /.fixed-navbar -->
