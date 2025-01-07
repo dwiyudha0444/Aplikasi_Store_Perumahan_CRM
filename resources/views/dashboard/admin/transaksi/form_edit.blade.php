@@ -52,6 +52,20 @@
                                 value="{{ old('tanggal_bayar', $transaksi->tanggal_bayar ?? '') }}">
                         </div>
 
+                        <!-- Tanggal Bayar -->
+                        <div class="form-group">
+                            <label for="tanggal_bayar">Tanggal Bayar</label>
+                            <input type="date" class="form-control" id="tanggal_bayar"  readonly
+                                value="{{ old('tanggal_bayar', $transaksi->nomer ?? '') }}">
+                        </div>
+
+                        <!-- Tanggal Bayar -->
+                        <div class="form-group">
+                            <label for="tanggal_bayar">Tanggal Bayar</label>
+                            <input type="date" class="form-control" id="tanggal_bayar"  readonly
+                                value="{{ old('tanggal_bayar', $transaksi->alamat ?? '') }}">
+                        </div>
+
                         <!-- Bukti Bayar -->
                         <div class="form-group">
                             <label for="bukti_bayar">Bukti Bayar</label>
