@@ -16,6 +16,7 @@ use App\Http\Controllers\Pelanggan\BookingController;
 use App\Http\Controllers\Pelanggan\LandingpagePelangganController;
 use App\Http\Controllers\Pelanggan\TransaksiController;
 use App\Models\Pembayaran;
+use App\Models\Transaksi;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,6 +62,7 @@ Route::get('/transaksi/show/{id}', [TransaksiAdminController::class, 'show'])->n
 Route::get('/transaksi/{id}/show-image', [TransaksiAdminController::class, 'showImage'])->name('transaksi.show_image');
 Route::get('/transaksi/edit/{id}', [TransaksiAdminController::class, 'edit'])->name('transaksi_admin_edit');
 Route::put('/transaksi/edit/{id}', [TransaksiAdminController::class, 'update'])->name('transaksi_admin_update');
+Route::delete('/transaksi/delete/{id}', [TransaksiAdminController::class, 'destroy'])->name('delete_transaksi_admin');
 
 
 //denah perum

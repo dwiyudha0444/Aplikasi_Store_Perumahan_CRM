@@ -63,6 +63,13 @@
                                 <td class="text-center align-middle">
                                     <a href="{{ route('transaksi_admin_show', $row->id) }}" class="btn btn-primary btn-sm">Detail</a>
                                     <a href="{{ route('transaksi_admin_edit', $row->id) }}" class="btn btn-primary btn-sm">Edit</a>
+                                <form action="{{ route('delete_transaksi_admin', $row->id) }}" method="POST"
+                                        onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');"
+                                        class="d-inline-block">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
