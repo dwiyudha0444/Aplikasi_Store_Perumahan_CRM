@@ -54,7 +54,7 @@
                         @foreach ($angsuran as $row)
                             <tr data-jalan="{{ strtolower($row->user->name) }}">
                                 <td>{{ $no++ }}</td>
-                                <td>{{ $row->promosi }}</td>
+                                <td>{{ $row->id_pembayaran ? $row->id_pembayaran : 'Belum dipilih' }}</td>
                                 <td>{{ $row->user->name }}</td>
                                 <td>Rp. {{ number_format($row->jumlah_angsuran, 0, ',', '.') }}</td>
                                 <td>Setiap Tanggal 25</td>

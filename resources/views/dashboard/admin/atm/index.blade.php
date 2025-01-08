@@ -6,7 +6,7 @@
                 <h4 class="box-title">Bangunan</h4>
 
                 <!-- Tombol Tambah -->
-                {{-- <a href="{{ route('form_bangunan') }}">
+                <a href="{{ route('create_pembayaran_admin') }}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" title="Tambah Data"
                         class="bi bi-bookmark-plus" viewBox="0 0 16 16">
                         <path
@@ -14,11 +14,12 @@
                         <path
                             d="M8 4a.5.5 0 0 1 .5.5V6H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V7H6a.5.5 0 0 1 0-1h1.5V4.5A.5.5 0 0 1 8 4z" />
                     </svg>
-                </a> --}}
+                </a>
 
                 <!-- Search bar -->
                 <div class="table-responsive">
-                    <input type="text" id="searchBar" class="form-control" placeholder="Cari..." oninput="filterTable(this.value)">
+                    <input type="text" id="searchBar" class="form-control" placeholder="Cari..."
+                        oninput="filterTable(this.value)">
                 </div>
 
                 @if (session('success'))
@@ -38,12 +39,9 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Nama Pelanggan</th>
-                            <th>Nama Bangunan</th>
-                            <th>Kode Promosi</th>
-                            <th>Harga DP</th>
-                            <th>Tanggal Bayar</th>
-                            <th>Status</th>
+                            <th>Bank Tujuan</th>
+                            <th>Keterangan</th>
+                            <th>Nomer Atm</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -51,19 +49,25 @@
                         @php
                             $no = 1;
                         @endphp
-                        @foreach ($transaksi as $row)
-                            <tr data-name="{{ strtolower($row->bangunan->nama) }}" data-jalan="{{ strtolower($row->user->name) }}">
+                        @foreach ($pembayaran as $row)
+                            <tr data-name="{{ strtolower($row->bank_tujuan) }}"
+                                data-jalan="{{ strtolower($row->nomer_atm) }}">
                                 <td>{{ $no++ }}</td>
-                                <td>{{ $row->user->name }}</td>
-                                <td>{{ $row->bangunan->nama }}</td>
-                                <td>{{ $row->promosi }}</td>
-                                <td>{{ $row->harga }}</td>
-                                <td>{{ $row->tanggal_bayar }}</td>
-                                <td>{{ $row->status }}</td>
+                                <td>{{ $row->bank_tujuan }}</td>
+                                <td>{{ $row->keterangan }}</td>
+                                <td>{{ $row->nomer_atm }}</td>
                                 <td class="text-center align-middle">
-                                    <a href="{{ route('transaksi_admin_show', $row->id) }}" class="btn btn-primary btn-sm">Detail</a>
-                                    <a href="{{ route('transaksi_admin_edit', $row->id) }}" class="btn btn-primary btn-sm">Edit</a>
+                                    <a href="{{ route('edit_pembayaran_admin', $row->id) }}"
+                                        class="btn btn-primary btn-sm">Edit</a>
+                                    <form action="{{ route('delete_pembayaran_admin', $row->id) }}" method="POST"
+                                        onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');"
+                                        class="d-inline-block">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
+                                    </form>
                                 </td>
+
                             </tr>
                         @endforeach
                     </tbody>

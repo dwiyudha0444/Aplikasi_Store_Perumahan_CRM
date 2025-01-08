@@ -4,6 +4,7 @@ use App\Http\Controllers\admin\AngsuranAdminController;
 use App\Http\Controllers\admin\DashboardAdminController;
 use App\Http\Controllers\admin\DashboardMarketingController;
 use App\Http\Controllers\admin\DenahPerumController;
+use App\Http\Controllers\admin\PembayaranController;
 use App\Http\Controllers\admin\TransaksiAdminController;
 use App\Http\Controllers\auth\LoginController;
 use App\Http\Controllers\auth\RegisterController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\Pelanggan\AngsuranPelangganController;
 use App\Http\Controllers\Pelanggan\BookingController;
 use App\Http\Controllers\Pelanggan\LandingpagePelangganController;
 use App\Http\Controllers\Pelanggan\TransaksiController;
+use App\Models\Pembayaran;
 
 /*
 |--------------------------------------------------------------------------
@@ -84,3 +86,12 @@ Route::put('/transaksi_update_/{id}', [TransaksiController::class, 'update'])->n
 Route::get('/angsuran', [AngsuranPelangganController::class, 'index'])->name('angsuran');
 
 Route::get('/angsuran/admin', [AngsuranAdminController::class, 'index'])->name('angsuran_admin');
+
+//pembayaran
+
+Route::get('/pembayaran/admin', [PembayaranController::class, 'index'])->name('pembayaran_admin');
+Route::get('/pembayaran/admin/form', [PembayaranController::class, 'create'])->name('create_pembayaran_admin');
+Route::post('/pembayaran/admin/store', [PembayaranController::class, 'store'])->name('store_pembayaran_admin');
+Route::get('/pembayaran/admin/update/{id}', [PembayaranController::class, 'edit'])->name('edit_pembayaran_admin');
+Route::put('/pembayaran/admin/update/{id}', [PembayaranController::class, 'update'])->name('update_pembayaran_admin');
+Route::delete('/pembayaran/delete/{id}', [PembayaranController::class, 'destroy'])->name('delete_pembayaran_admin');

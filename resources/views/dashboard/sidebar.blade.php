@@ -30,7 +30,7 @@
                             </a>
                             <ul class="sub-menu js__content">
                                 <li><a href="{{ route('transaksi_admin')}}">Transaksi</a></li>
-                               
+                                <li><a href="{{ route('pembayaran_admin')}}">Data Pembayaran</a></li>                         
                             </ul>
                         </li>
                         <li>

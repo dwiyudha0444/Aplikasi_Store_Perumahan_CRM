@@ -78,6 +78,18 @@ class TransaksiAdminController extends Controller
             return redirect()->route('transaksi_admin')->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
         }
     }
+
+    public function destroy($id)
+    {
+        // Cari data berdasarkan ID
+        $transaksi = Transaksi::findOrFail($id);
+
+        // Hapus data dari database
+        $transaksi->delete();
+
+        // Redirect atau respon balik
+        return redirect()->route('transaksi_admin')->with('success', 'Data berhasil dihapus.');
+    }
     
     
 }
