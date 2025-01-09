@@ -18,7 +18,8 @@
 
                 <!-- Search bar -->
                 <div class="table-responsive">
-                    <input type="text" id="searchBar" class="form-control" placeholder="Cari..." oninput="filterTable(this.value)">
+                    <input type="text" id="searchBar" class="form-control" placeholder="Cari..."
+                        oninput="filterTable(this.value)">
                 </div>
 
                 @if (session('success'))
@@ -52,7 +53,8 @@
                             $no = 1;
                         @endphp
                         @foreach ($transaksi as $row)
-                            <tr data-name="{{ strtolower($row->bangunan->nama) }}" data-jalan="{{ strtolower($row->user->name) }}">
+                            <tr data-name="{{ strtolower($row->bangunan->nama) }}"
+                                data-jalan="{{ strtolower($row->user->name) }}">
                                 <td>{{ $no++ }}</td>
                                 <td>{{ $row->user->name }}</td>
                                 <td>{{ $row->bangunan->nama }}</td>
@@ -60,10 +62,18 @@
                                 <td>{{ $row->harga }}</td>
                                 <td>{{ $row->tanggal_bayar }}</td>
                                 <td>{{ $row->status }}</td>
+                                <td>
+                                    <a href="https://wa.me/{{ $row->nomer }}?text=Halo,%20saya%20ingin%20tanya%20tentang%20pembayaran%20ID%20{{ $row->id }}."
+                                        class="btn btn-success btn-sm" target="_blank">
+                                        WhatsApp
+                                    </a>
+                                </td>
                                 <td class="text-center align-middle">
-                                    <a href="{{ route('transaksi_admin_show', $row->id) }}" class="btn btn-primary btn-sm">Detail</a>
-                                    <a href="{{ route('transaksi_admin_edit', $row->id) }}" class="btn btn-primary btn-sm">Edit</a>
-                                <form action="{{ route('delete_transaksi_admin', $row->id) }}" method="POST"
+                                    <a href="{{ route('transaksi_admin_show', $row->id) }}"
+                                        class="btn btn-primary btn-sm">Detail</a>
+                                    <a href="{{ route('transaksi_admin_edit', $row->id) }}"
+                                        class="btn btn-primary btn-sm">Edit</a>
+                                    <form action="{{ route('delete_transaksi_admin', $row->id) }}" method="POST"
                                         onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');"
                                         class="d-inline-block">
                                         @csrf

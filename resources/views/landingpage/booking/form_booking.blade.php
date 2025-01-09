@@ -83,11 +83,11 @@
                                         @csrf
                                         <div class="form-group">
                                             <label for="id_users">Nama</label>
-                                            <input type="text" id="id_users_display" class="form-control"
-                                                value="{{ Auth::user()->name }}" readonly>
+                                            <input type="text" id="nama_pelanggan" class="form-control"
+                                                name="nama_pelanggan" value="{{ Auth::user()->name }}">
                                             <!-- Menampilkan nama user -->
                                             <input type="hidden" id="id_users" name="id_users"
-                                                value="{{ Auth::user()->id }}"> <!-- Mengirimkan ID user -->
+                                                value="{{ Auth::user()->id }}"> 
                                         </div>
 
                                         <div class="form-group">

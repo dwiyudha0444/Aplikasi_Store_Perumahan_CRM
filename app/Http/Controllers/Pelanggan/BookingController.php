@@ -29,6 +29,7 @@ class BookingController extends Controller
         $request->validate([
             'id_users' => 'required|string|max:255',
             'id_bangunan' => 'required|string|max:255',
+            'nama_pelanggan' => 'nullable|string|max:255',
             'blok' => 'nullable|string|max:255',
             'jalan' => 'nullable|string|max:255',
         ]);
@@ -40,6 +41,7 @@ class BookingController extends Controller
             DB::table('pemilihan_siteplan')->insert([
                 'id_users' => $request->id_users,
                 'id_bangunan' => $request->id_bangunan,
+                'nama_pelanggan' => $request->nama_pelanggan,
                 'blok' => $request->blok,
                 'jalan' => $request->jalan,
                 'created_at' => now(),

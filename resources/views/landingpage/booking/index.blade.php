@@ -199,7 +199,7 @@
                                 @foreach ($booking as $use)
                                     <tr>
                                         <td>1</td>
-                                        <td>{{ $use->user->name }}</td>
+                                        <td>{{ $use->nama_pelanggan }}</td>
                                         <td>{{ $use->bangunan->nama }}</td>
                                         <td>{{ $use->blok }}</td>
                                         <td>Rp. 10.000.000</td>
