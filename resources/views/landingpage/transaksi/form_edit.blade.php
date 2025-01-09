@@ -95,6 +95,7 @@
                                             <input type="hidden" id="status" name="status" value="verifikasi">
                                         </div>
 
+
                                         <div class="form-group">
                                             <input type="hidden" id="blok" name="blok"
                                                 value="{{ $transaksi->bangunan->blok }}">
@@ -107,14 +108,28 @@
                                         </div>
 
                                         <div class="form-group">
+                                            <label for="nama_marketing">Nama Marketing</label>
+                                            <input type="text" id="nama_marketing" name="nama_marketing"
+                                                class="form-control" placeholder="Masukkan nama marketing" readonly
+                                                value="{{ old('nama_marketing', $transaksi->nama_marketing ?? '') }}">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="nama_pelanggan">Nama Pelanggan</label>
+                                            <input type="text" id="nama_pelanggan" name="nama_pelanggan"
+                                                class="form-control" placeholder="Masukkan nama pelanggan"
+                                                value="{{ old('nama_pelanggan', $transaksi->nama_pelanggan ?? '') }}">
+                                        </div>
+
+                                        <div class="form-group">
                                             <label for="alamat">Alamat</label>
                                             <textarea id="alamat" name="alamat" class="form-control" rows="3" placeholder="Masukkan alamat">{{ old('alamat', $transaksi->alamat ?? '') }}</textarea>
                                         </div>
 
                                         <div class="form-group">
                                             <label for="nomer">Nomor Telepon</label>
-                                            <input type="text" id="nomer" name="nomer"
-                                                class="form-control" placeholder="Masukkan nomer telepon"
+                                            <input type="text" id="nomer" name="nomer" class="form-control"
+                                                placeholder="Masukkan nomer telepon"
                                                 value="{{ old('nomer', $transaksi->nomer ?? '') }}">
                                         </div>
 

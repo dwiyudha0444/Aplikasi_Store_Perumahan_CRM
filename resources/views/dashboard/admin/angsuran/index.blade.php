@@ -40,10 +40,9 @@
                         <tr>
                             <th>No</th>
                             <th>Pembayaran</th>
-                            <th>Nama Bangunan</th>
-                            <th>Tanggal Jatuh Tempo</th>
-                            <th>Jumlah Angsuran</th>
-                            <th>Sisa Angsuran</th>
+                            <th>Nama Pelanggan</th>
+                            <th>Tenor Angsuran</th>
+                            <th>Cicilan</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -52,13 +51,12 @@
                             $no = 1;
                         @endphp
                         @foreach ($angsuran as $row)
-                            <tr data-jalan="{{ strtolower($row->user->name) }}">
+                            <tr data-jalan="{{ strtolower($row->nama_pelanggan) }}">
                                 <td>{{ $no++ }}</td>
                                 <td>{{ $row->id_pembayaran ? $row->id_pembayaran : 'Belum dipilih' }}</td>
-                                <td>{{ $row->user->name }}</td>
-                                <td>Rp. {{ number_format($row->jumlah_angsuran, 0, ',', '.') }}</td>
-                                <td>Setiap Tanggal 25</td>
-                                <td>Rp. {{ number_format($row->sisa_angsuran, 0, ',', '.') }}</td>
+                                <td>{{ $row->nama_pelanggan }}</td>
+                                <td>{{ $row->tenor_angsuran ? $row->tenor_angsuran : 'Belum dipilih'  }}</td>
+                                <td>{{ $row->cicilan ? $row->cicilan : 'Belum dipilih'  }}</td>
 
                                 <td class="text-center align-middle">
                                     <a href="{{ route('transaksi_admin_show', $row->id) }}"

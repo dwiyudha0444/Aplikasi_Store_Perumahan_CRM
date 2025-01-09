@@ -106,13 +106,13 @@
                                             <label for="blok">Blok</label>
                                             <input type="text" id="blok" name="blok" class="form-control"
                                                 placeholder="Masukkan Blok"
-                                                value="{{ old('blok', $bangunan->blok ?? '') }}">
+                                                value="{{ old('blok', $bangunan->blok ?? '') }} "readonly>
                                         </div>
                                         <div class="form-group">
                                             <label for="blok">Jalan</label>
                                             <input type="text" id="jalan" name="jalan" class="form-control"
                                                 placeholder="Masukkan Jalan"
-                                                value="{{ old('jalan', $bangunan->jalan ?? '') }}">
+                                                value="{{ old('jalan', $bangunan->jalan ?? '') }} " readonly>
                                         </div>
                                         <div class="form-group text-center">
                                             <button type="submit" class="btn btn-primary">Simpan</button>

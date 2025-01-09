@@ -91,6 +91,8 @@ Route::get('/angsuran', [AngsuranPelangganController::class, 'index'])->name('an
 
 Route::get('/angsuran/admin', [AngsuranAdminController::class, 'index'])->name('angsuran_admin');
 
+Route::get('/angsuran/edit/{id}', [AngsuranPelangganController::class, 'edit'])->name('edit_angsuran');
+
 //pembayaran
 
 Route::get('/pembayaran/admin', [PembayaranController::class, 'index'])->name('pembayaran_admin');

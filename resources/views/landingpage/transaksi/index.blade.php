@@ -44,6 +44,8 @@
                             <ul class="nk-menu">
                                 <li class="nk-menu-item"><a class="scrollto nav-link nk-menu-link"
                                         href="{{ route('landingpage_pelanggan') }}">Home</a></li>
+                                        <li class="nk-menu-item"><a class="scrollto nav-link nk-menu-link"
+                                    href="{{ route('angsuran') }}">Angsuran</a></li>
                                 <li class="nk-menu-item"><a class="scrollto nav-link nk-menu-link"
                                         href="{{ route('transaksi') }}">Transaksi</a></li>
                                 <li class="nk-menu-item"><a class="scrollto nav-link nk-menu-link"
@@ -110,6 +112,7 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Nama Pelanggan</th>
+                                    <th>Nama Marketing</th>
                                     <th>Nama Bangunan</th>
                                     <th>Blok</th>
                                     <th>Harga Bangunan</th>
@@ -123,7 +126,8 @@
                                 @foreach ($transaksi as $use)
                                     <tr>
                                         <td>1</td>
-                                        <td>{{ $use->user->name }}</td>
+                                        <td>{{ $use->nama_pelanggan }}</td>
+                                        <td>{{ $use->nama_marketing }}</td>
                                         <td>{{ $use->bangunan->nama }}</td>
                                         <td>{{ $use->bangunan->blok }}</td>
                                         <td>Rp. {{ number_format($use->bangunan->harga, 0, ',', '.') }}</td>

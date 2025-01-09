@@ -4,7 +4,7 @@
         <div class="container">
             <div class="nk-navbar-wrap">
                 <div class="nk-navbar-logo logo">
-                     <h1 class="logo-text">Siteplan</h1>
+                    <h1 class="logo-text">Siteplan</h1>
                 </div><!-- .nk-navbar-logo -->
                 <div class="nk-navbar-toggle d-lg-none">
                     <a href="#" class="toggle" data-menu-toggle="navbar-menu"><em
@@ -15,7 +15,7 @@
                         <li class="nk-menu-item"><a class="scrollto nav-link nk-menu-link" href="#home">Home</a></li>
 
                         @auth
-                        <li class="nk-menu-item"><a class="scrollto nav-link nk-menu-link"
+                            <li class="nk-menu-item"><a class="scrollto nav-link nk-menu-link"
                                     href="{{ route('angsuran') }}">Angsuran</a></li>
                             <li class="nk-menu-item"><a class="scrollto nav-link nk-menu-link"
                                     href="{{ route('transaksi') }}">Transaksi</a></li>
@@ -86,7 +86,7 @@
                                 China in December 2019, the outbreak was later recognized as a
                                 pandemic by the World Health Organization (WHO) on 11 March 2020.</p>
 
-                         
+
                         </div><!-- .content -->
                     </div><!-- .nk-banner-block -->
                 </div><!-- .col -->
@@ -95,8 +95,8 @@
     </div><!-- .nk-banner -->
 </header><!-- .nk-header -->
 <style>
-.nk-banner {
-    background-image: none !important;
-    background-color: #f5f5f5;
-}
+    .nk-banner {
+        background-image: none !important;
+        background-color: #f5f5f5;
+    }
 </style>

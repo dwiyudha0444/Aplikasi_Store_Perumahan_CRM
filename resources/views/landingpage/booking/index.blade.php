@@ -123,6 +123,8 @@
                             <ul class="nk-menu">
                                 <li class="nk-menu-item"><a class="scrollto nav-link nk-menu-link"
                                         href="{{ route('landingpage_pelanggan') }}">Home</a></li>
+                                        <li class="nk-menu-item"><a class="scrollto nav-link nk-menu-link"
+                                    href="{{ route('angsuran') }}">Angsuran</a></li>
                                 <li class="nk-menu-item"><a class="scrollto nav-link nk-menu-link"
                                         href="{{ route('transaksi') }}">Transaksi</a></li>
                                 <li class="nk-menu-item"><a class="scrollto nav-link nk-menu-link"
