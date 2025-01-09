@@ -11,6 +11,8 @@ class Angsuran extends Model
 
     protected $fillable = [
         'id_pembayaran',
+        'nama_pelanggan',
+        'bukti_dp_lunas'
     ];
 
     public function transaksi()

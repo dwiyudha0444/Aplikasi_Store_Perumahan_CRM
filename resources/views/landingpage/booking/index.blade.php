@@ -95,12 +95,12 @@
         });
     </script>
 
-<style>
-.nk-page-head {
-    background-image: none !important;
-    background-color: #f5f5f5;
-}
-</style>
+    <style>
+        .nk-page-head {
+            background-image: none !important;
+            background-color: #f5f5f5;
+        }
+    </style>
 
     <div class="nk-wrap">
         <header class="nk-header bg-light has-overlay" id="home">
@@ -207,7 +207,16 @@
                                             <button class="btn btn-primary btn-bayar" data-id="{{ $use->id }}">
                                                 Bayar Sekarang
                                             </button>
+                                            <form action="{{ route('delete_booking', $use->id) }}"
+                                                method="POST"
+                                                onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');"
+                                                class="d-inline-block">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
+                                            </form>
                                         </td>
+
 
                                     </tr>
                                 @endforeach
@@ -269,7 +278,7 @@
                     <div class="nk-footer-bottom">
                         <div class="row align-items-center">
                             <div class="col-md-6">
-                                <p class="nk-copyright">&copy;  Template Made by <a
+                                <p class="nk-copyright">&copy; Template Made by <a
                                         href="https://softnio.com">Softnio</a>.</p>
                             </div><!-- .col -->
                             <div class="col-md-6">

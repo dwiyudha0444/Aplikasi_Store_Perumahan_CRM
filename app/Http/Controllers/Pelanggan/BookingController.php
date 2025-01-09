@@ -63,6 +63,19 @@ class BookingController extends Controller
             return redirect()->route('booking')->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
         }
     }
+
+
+    public function destroy($id)
+    {
+        // Cari data berdasarkan ID
+        $booking = Booking::findOrFail($id);
+
+        // Hapus data dari database
+        $booking->delete();
+
+        // Redirect atau respon balik
+        return redirect()->route('booking')->with('success', 'Data berhasil dihapus.');
+    }
     
 
 
