@@ -10,7 +10,7 @@ Dasbord Pelanggan
 5. Ulasan belum tersedia
 
 Dasboard Marketing
-1.  Tambah informasi dan output pelanggan yang menggunakan kode promosi
+1.  Tambah informasi dan output pelanggan yang menggunakan kode promosi V
 
 Dasbord admin
 1. Lanjutkan

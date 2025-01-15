@@ -55,6 +55,7 @@ Route::post('/promosi_marketing/store', [PromosiMarketingController::class, 'sto
 Route::delete('/promosi/{id}', [PromosiMarketingController::class, 'destroy'])->name('promosi.destroy');
 
 Route::get('/marketing/daftar_pelanggan', [DaftarPelangganController::class, 'index'])->name('daftar_pelanggan_marketing');
+Route::delete('/marketing/daftar_pelanggan/{id}', [DaftarPelangganController::class, 'destroy'])->name('daftar_pelanggan_marketing.destroy');
 
 
 Route::get('/denah_edit/{id}', [DenahPerumController::class, 'edit'])->name('denah_edit');
