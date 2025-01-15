@@ -70,6 +70,7 @@
                                     class="menu-arrow fa fa-angle-down"></span></a>
                             <ul class="sub-menu js__content">
                                 <li><a href="{{ route('promosi_marketing') }}">Promosi</a></li>
+                                <li><a href="{{ route('daftar_pelanggan_marketing') }}">Daftar Pelanggan</a></li>
                             </ul>
                             <!-- /.sub-menu js__content -->
                         {{-- </li>

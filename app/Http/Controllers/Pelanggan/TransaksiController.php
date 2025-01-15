@@ -8,6 +8,7 @@ use App\Models\Promosi;
 use App\Models\Transaksi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class TransaksiController extends Controller
 {
@@ -74,6 +75,13 @@ class TransaksiController extends Controller
                 $hargaakhir = $harga - $potongan;
                 $promosi->increment('digunakan');
                 $nama_marketing = $promosi->nama_marketing;
+
+                DB::table('daftar_pelanggan')->insert([
+                    'id_user' => Auth::id(),
+                    'id_marketing' => $promosi->id_marketing,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ]);
             } else {
                 // Jika kode promosi tidak valid atau sudah kadaluwarsa
                 return back()->with('error', 'Kode promosi tidak valid atau sudah kadaluwarsa.');

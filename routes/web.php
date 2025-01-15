@@ -10,11 +10,13 @@ use App\Http\Controllers\auth\LoginController;
 use App\Http\Controllers\auth\RegisterController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\landingpageController;
+use App\Http\Controllers\marketing\DaftarPelangganController;
 use App\Http\Controllers\Marketing\PromosiMarketingController;
 use App\Http\Controllers\Pelanggan\AngsuranPelangganController;
 use App\Http\Controllers\Pelanggan\BookingController;
 use App\Http\Controllers\Pelanggan\LandingpagePelangganController;
 use App\Http\Controllers\Pelanggan\TransaksiController;
+use App\Models\DaftarPelanggan;
 use App\Models\Pembayaran;
 use App\Models\Transaksi;
 
@@ -51,6 +53,8 @@ Route::get('/promosi_marketing', [PromosiMarketingController::class, 'index'])->
 Route::get('/promosi_marketing/form', [PromosiMarketingController::class, 'create'])->name('promosi_marketing_form');
 Route::post('/promosi_marketing/store', [PromosiMarketingController::class, 'store'])->name('promosi_marketing_store');
 Route::delete('/promosi/{id}', [PromosiMarketingController::class, 'destroy'])->name('promosi.destroy');
+
+Route::get('/marketing/daftar_pelanggan', [DaftarPelangganController::class, 'index'])->name('daftar_pelanggan_marketing');
 
 
 Route::get('/denah_edit/{id}', [DenahPerumController::class, 'edit'])->name('denah_edit');
@@ -101,3 +105,4 @@ Route::post('/pembayaran/admin/store', [PembayaranController::class, 'store'])->
 Route::get('/pembayaran/admin/update/{id}', [PembayaranController::class, 'edit'])->name('edit_pembayaran_admin');
 Route::put('/pembayaran/admin/update/{id}', [PembayaranController::class, 'update'])->name('update_pembayaran_admin');
 Route::delete('/pembayaran/delete/{id}', [PembayaranController::class, 'destroy'])->name('delete_pembayaran_admin');
+
