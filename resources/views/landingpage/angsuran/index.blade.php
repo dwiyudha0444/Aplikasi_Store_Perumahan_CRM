@@ -129,7 +129,8 @@
                                         <td>
                                             <a href="{{ route('edit_angsuran', $use->id) }}"
                                                 class="btn btn-primary btn-sm">Edit</a>
-                                                
+                                            <a href="{{ route('download_pdf', $use->id) }}"
+                                                class="btn btn-success btn-sm">Download PDF</a>
                                         </td>
                                     </tr>
                                 @endforeach

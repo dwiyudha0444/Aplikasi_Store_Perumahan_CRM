@@ -97,6 +97,8 @@ Route::get('/angsuran', [AngsuranPelangganController::class, 'index'])->name('an
 Route::get('/angsuran/admin', [AngsuranAdminController::class, 'index'])->name('angsuran_admin');
 
 Route::get('/angsuran/edit/{id}', [AngsuranPelangganController::class, 'edit'])->name('edit_angsuran');
+Route::put('/angsuran/edit/{id}', [AngsuranPelangganController::class, 'update'])->name('update_angsuran');
+Route::get('/angsuran/download-pdf/{id}', [AngsuranPelangganController::class, 'downloadPdf'])->name('download_pdf');
 
 //pembayaran
 

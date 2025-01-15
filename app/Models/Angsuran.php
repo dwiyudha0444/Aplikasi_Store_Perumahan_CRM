@@ -15,9 +15,9 @@ class Angsuran extends Model
         'bukti_dp_lunas'
     ];
 
-    public function transaksi()
+    public function atm()
     {
-        return $this->belongsTo(Transaksi::class, 'id_pembayaran', 'id');
+        return $this->belongsTo(Pembayaran::class, 'id_pembayaran', 'id');
     }
 
     
