@@ -56,18 +56,13 @@
                             <tr data-name="{{ strtolower($row->bangunan->nama) }}"
                                 data-jalan="{{ strtolower($row->user->name) }}">
                                 <td>{{ $no++ }}</td>
-                                <td>{{ $row->user->name }}</td>
+                                <td>{{ $row->nama_pelanggan }}</td>
                                 <td>{{ $row->bangunan->nama }}</td>
                                 <td>{{ $row->promosi }}</td>
                                 <td>{{ $row->harga }}</td>
                                 <td>{{ $row->tanggal_bayar }}</td>
                                 <td>{{ $row->status }}</td>
-                                <td>
-                                    <a href="https://wa.me/{{ $row->nomer }}?text=Halo,%20saya%20ingin%20tanya%20tentang%20pembayaran%20ID%20{{ $row->id }}."
-                                        class="btn btn-success btn-sm" target="_blank">
-                                        WhatsApp
-                                    </a>
-                                </td>
+                                
                                 <td class="text-center align-middle">
                                     <a href="{{ route('transaksi_admin_show', $row->id) }}"
                                         class="btn btn-primary btn-sm">Detail</a>

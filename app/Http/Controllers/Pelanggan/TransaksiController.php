@@ -14,9 +14,31 @@ class TransaksiController extends Controller
 {
     public function index()
     {
-        $transaksi = Transaksi::all();
+        // Ambil data transaksi yang telah melewati jatuh tempo
+        $expiredTransaksi = Transaksi::where('created_at', '<', now()->subWeeks(2))->get();
+
+        // Update status terkait jika diperlukan
+        foreach ($expiredTransaksi as $expired) {
+            $expired->update(['status' => 'expired']);
+        }
+
+        // Hapus data transaksi yang telah melewati jatuh tempo
+        Transaksi::where('created_at', '<', now()->subWeeks(2))->delete();
+
+        // Ambil data transaksi yang tersisa
+        $transaksi = Transaksi::orderBy('created_at', 'desc')->get();
+
+        // Tambahkan atribut tambahan ke setiap transaksi
+        foreach ($transaksi as $item) {
+            $item->jatuh_tempo = $item->created_at->addWeeks(2);
+            $item->status_tempo = now()->greaterThanOrEqualTo($item->jatuh_tempo) ? 'Lewat Tempo' : 'Masih Berlaku';
+            $item->sisa_hari = now()->diffInDays($item->jatuh_tempo, false);
+        }
+
+        // Kirim data ke view
         return view('landingpage.transaksi.index', compact('transaksi'));
     }
+
 
     public function edit($id)
     {
@@ -57,6 +79,7 @@ class TransaksiController extends Controller
             'id_bangunan' => 'required|string|max:255',
             'promosi' => 'nullable|min:0', // Kode promosi bisa kosong
             'harga' => 'required|numeric|min:0',
+            'nama_pelanggan' => 'required'
         ]);
 
 
@@ -99,6 +122,7 @@ class TransaksiController extends Controller
         DB::table('transaksi')->insert([
             'id_users' => $request->id_users,
             'nama_marketing' => $nama_marketing,
+            'nama_pelanggan' => $request->nama_pelanggan,
             'id_bangunan' => $request->id_bangunan,
             'harga' => $hargaakhir,
             'status' => 'proses',
@@ -124,6 +148,7 @@ class TransaksiController extends Controller
             'blok' => 'required',
             'alamat' => 'required',
             'status' => 'required',
+            'nomer' => 'required',
         ]);
 
         // Temukan data yang akan diupdate
@@ -156,6 +181,7 @@ class TransaksiController extends Controller
             'blok' => $request->blok,
             'alamat' => $request->alamat,
             'status' => $request->status,
+            'nomer' => $request->nomer,
             'updated_at' => now(),
         ]);
 

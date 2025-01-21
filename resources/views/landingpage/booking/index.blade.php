@@ -42,7 +42,7 @@
                                 <input type="hidden" class="form-control" id="id_users" name="id_users" value="${response.id_users}" readonly>
                                 
                                 <input type="hidden" class="form-control" id="id_bangunan" name="id_bangunan" value="${response.id_bangunan}" readonly>
-                    
+                    <input type="hidden" class="form-control" id="nama_pelanggan" name="nama_pelanggan" value="${response.nama_pelanggan}" readonly>
 
                             <div class="form-group">
                                 <label for="harga">Kode Promosi (Opsional)</label>

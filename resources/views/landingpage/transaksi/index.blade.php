@@ -44,8 +44,8 @@
                             <ul class="nk-menu">
                                 <li class="nk-menu-item"><a class="scrollto nav-link nk-menu-link"
                                         href="{{ route('landingpage_pelanggan') }}">Home</a></li>
-                                        <li class="nk-menu-item"><a class="scrollto nav-link nk-menu-link"
-                                    href="{{ route('angsuran') }}">Angsuran</a></li>
+                                <li class="nk-menu-item"><a class="scrollto nav-link nk-menu-link"
+                                        href="{{ route('angsuran') }}">Angsuran</a></li>
                                 <li class="nk-menu-item"><a class="scrollto nav-link nk-menu-link"
                                         href="{{ route('transaksi') }}">Transaksi</a></li>
                                 <li class="nk-menu-item"><a class="scrollto nav-link nk-menu-link"
@@ -119,13 +119,16 @@
                                     <th>Harga DP</th>
                                     <th>Status</th>
                                     <th>Kode Promosi</th>
+                                    <th>Jatuh Tempo</th>
+                                    <th>Status Tempo</th>
+                                    <th>Sisa Hari</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($transaksi as $use)
+                                @foreach ($transaksi as $index => $use)
                                     <tr>
-                                        <td>1</td>
+                                        <td>{{ $index + 1 }}</td>
                                         <td>{{ $use->nama_pelanggan }}</td>
                                         <td>{{ $use->nama_marketing }}</td>
                                         <td>{{ $use->bangunan->nama }}</td>
@@ -134,24 +137,26 @@
                                         <td>Rp. 10.000.000</td>
                                         <td>{{ $use->status }}</td>
                                         <td>{{ $use->promosi }}</td>
-                                        <td class="text-center align-middle">
-                                            @if ($use->status === 'verifikasi')
-                                                <a href="{{ route('get_transaksi_update', $use->id) }}"
-                                                    class="btn btn-success btn-bayar">
-                                                    Menunggu Admin
-                                                </a>
+                                        <td>{{ $use->jatuh_tempo->format('d-m-Y') }}</td>
+                                        <td>{{ $use->status_tempo }}</td>
+                                        <td>
+                                            @if ($use->sisa_hari < 0)
+                                                <span class="text-danger">{{ $use->sisa_hari }} Hari</span>
                                             @else
+                                                <span class="text-success">{{ $use->sisa_hari }} Hari</span>
+                                            @endif
+                                        </td>
+                                        <td class="text-center align-middle">
                                                 <a href="{{ route('get_transaksi_update', $use->id) }}"
                                                     class="btn btn-primary btn-bayar">
-                                                    Bayar Sekarang
+                                                    Edit
                                                 </a>
-                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach
-
                             </tbody>
                         </table>
+
                     </div>
                 </div>
             </section>

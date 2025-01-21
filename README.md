@@ -13,5 +13,5 @@ Dasboard Marketing
 1.  Tambah informasi dan output pelanggan yang menggunakan kode promosi V
 
 Dasbord admin
-1. Lanjutkan
+1. Lanjutkan 
 2. ⁠tambah output seperti info alih bank, info angsuran, dan output info tersedia, proses, boking dan terjual
