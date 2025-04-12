@@ -123,8 +123,8 @@
                             <ul class="nk-menu">
                                 <li class="nk-menu-item"><a class="scrollto nav-link nk-menu-link"
                                         href="{{ route('landingpage_pelanggan') }}">Home</a></li>
-                                        <li class="nk-menu-item"><a class="scrollto nav-link nk-menu-link"
-                                    href="{{ route('angsuran') }}">Angsuran</a></li>
+                                <li class="nk-menu-item"><a class="scrollto nav-link nk-menu-link"
+                                        href="{{ route('angsuran') }}">Angsuran</a></li>
                                 <li class="nk-menu-item"><a class="scrollto nav-link nk-menu-link"
                                         href="{{ route('transaksi') }}">Transaksi</a></li>
                                 <li class="nk-menu-item"><a class="scrollto nav-link nk-menu-link"
@@ -194,23 +194,34 @@
                                     <th>Nama Bangunan</th>
                                     <th>Blok</th>
                                     <th>Harga DP</th>
+                                    <th>Jatuh Tempo Booking</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($booking as $use)
                                     <tr>
-                                        <td>1</td>
+                                        <td>{{ $loop->iteration }}</td>
                                         <td>{{ $use->nama_pelanggan }}</td>
                                         <td>{{ $use->bangunan->nama }}</td>
                                         <td>{{ $use->blok }}</td>
                                         <td>Rp. 10.000.000</td>
+                                        <td>
+                                            @if ($use->sisa_hari >= 0)
+                                                <span class="badge badge-success">
+                                                    {{ $use->sisa_hari }} hari lagi
+                                                </span>
+                                            @else
+                                                <span class="badge badge-danger">
+                                                    {{ $use->status_tempo }}
+                                                </span>
+                                            @endif
+                                        </td>
                                         <td class="text-center align-middle">
                                             <button class="btn btn-primary btn-bayar" data-id="{{ $use->id }}">
                                                 Bayar Sekarang
                                             </button>
-                                            <form action="{{ route('delete_booking', $use->id) }}"
-                                                method="POST"
+                                            <form action="{{ route('delete_booking', $use->id) }}" method="POST"
                                                 onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');"
                                                 class="d-inline-block">
                                                 @csrf
@@ -218,11 +229,10 @@
                                                 <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
                                             </form>
                                         </td>
-
-
                                     </tr>
                                 @endforeach
                             </tbody>
+
                         </table>
                     </div>
                 </div>

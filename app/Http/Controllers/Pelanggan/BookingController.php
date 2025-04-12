@@ -12,10 +12,31 @@ class BookingController extends Controller
 {
     public function index()
     {
+        // Ambil data booking yang telah melewati jatuh tempo
+        $expiredBookings = Booking::where('created_at', '<', now()->subWeeks(2))->get();
+    
+        // Update status bangunan menjadi "open" untuk data yang jatuh tempo
+        foreach ($expiredBookings as $expired) {
+            $expired->bangunan->update(['status' => 'open']);
+        }
+    
+        // Hapus data booking yang telah melewati jatuh tempo
+        Booking::where('created_at', '<', now()->subWeeks(2))->delete();
+    
+        // Ambil data booking yang tersisa
         $booking = Booking::orderBy('created_at', 'desc')->get();
+    
+        // Tambahkan atribut tambahan ke setiap booking
+        foreach ($booking as $item) {
+            $item->jatuh_tempo = $item->created_at->addWeeks(2);
+            $item->status_tempo = now()->greaterThanOrEqualTo($item->jatuh_tempo) ? 'Lewat Tempo' : 'Masih Berlaku';
+            $item->sisa_hari = now()->diffInDays($item->jatuh_tempo, false);
+        }
+    
         return view('landingpage.booking.index', compact('booking'));
     }
-
+    
+    
 
     public function edit($id)
     {
